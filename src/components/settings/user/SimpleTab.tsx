@@ -34,7 +34,6 @@ const SimpleTab = ({ list }) => {
 
 const Wrapper = styled.View`
     flex-direction: row;
-    // flex: 1;
 `;
 
 const TabItem = styled.TouchableOpacity`

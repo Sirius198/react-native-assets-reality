@@ -1,10 +1,17 @@
 import styled from 'styled-components/native'
 import Typography from '../typography/Typography';
 
-const Avatar = ({ alt, color = "#019CDE", size = 50, ...rest }) => {
+const Avatar = ({
+    alt,
+    color = "#019CDE",
+    size = 50,
+    fontSize = 20,
+    fontWeight = "Regular",
+    ...rest
+}) => {
     return (
         <Wrapper color={color} size={size} {...rest}>
-            <Typography style={{ color: 'white' }} size={20}>{alt}</Typography>
+            <Typography style={{ color: 'white' }} size={fontSize} weight={fontWeight}>{alt}</Typography>
         </Wrapper>
     )
 };

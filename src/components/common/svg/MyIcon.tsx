@@ -28,6 +28,7 @@ import SearchSvg from "../../../assets/icons/common/search_icon.svg";
 import QRCodeSvg from "../../../assets/icons/common/qrcode.svg";
 import WithdrawalSvg from "../../../assets/icons/common/withdrawal.svg";
 import DollarCircleSvg from "../../../assets/icons/common/dollar-circle.svg";
+import CopySvg from "../../../assets/icons/common/copy.svg";
 
 // Country
 export const UK = props => <CountryUKSvg {...props} />
@@ -58,3 +59,4 @@ export const Search = props => <SearchSvg {...props} />
 export const QRCode = props => <QRCodeSvg {...props} />
 export const Withdrawal = props => <WithdrawalSvg {...props} />
 export const DollarCircle = props => <DollarCircleSvg {...props} />
+export const Copy = props => <CopySvg {...props} />

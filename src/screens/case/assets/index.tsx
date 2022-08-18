@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import styled from 'styled-components/native'
 import AssetItem from '../../../components/cases/detail/AssetItem';
 import AddAssetModal from '../../../components/cases/modal/AddAssetModal';
+import AssetQRCodeModal from '../../../components/cases/modal/AssetQRCodeModal';
 import AssetQuickActionModal from '../../../components/cases/modal/AssetQuickActionModal';
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import SearchBox from '../../../components/common/input/SearchBox';
@@ -12,6 +13,7 @@ export default function TotalAssetsPage({ navigation }) {
 
     const [showAddAssetModal, setShowAddAssetModal] = useState(false);
     const [showQuickActionModal, setShowQuickActionModal] = useState(false);
+    const [showQRCodeModal, setShowQRCodeModal] = useState(false);
 
     const doQuickAction = () => {
         setShowQuickActionModal(true);
@@ -49,6 +51,21 @@ export default function TotalAssetsPage({ navigation }) {
             <AssetQuickActionModal
                 show={showQuickActionModal}
                 onClose={() => setShowQuickActionModal(false)}
+                onNext={() => {
+                    setShowQuickActionModal(false);
+                    setShowQRCodeModal(true);
+                }}
+            />
+
+            <AssetQRCodeModal
+                show={showQRCodeModal}
+                onClose={() => {
+                    setShowQRCodeModal(false);
+                    setShowQuickActionModal(true);
+                }}
+                onOk={() => {
+                    setShowQRCodeModal(false);
+                }}
             />
         </Wrapper>
     )

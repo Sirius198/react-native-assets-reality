@@ -49,6 +49,9 @@ const lightStyles = StyleSheet.create({
     },
     percent: {
         color: '#45D8C8'
+    },
+    active: {
+        color: '#FFF'
     }
 });
 
@@ -64,6 +67,9 @@ const darkStyles = StyleSheet.create({
     },
     percent: {
         color: '#45D8C8'
+    },
+    active: {
+        color: '#FFF'
     }
 });
 

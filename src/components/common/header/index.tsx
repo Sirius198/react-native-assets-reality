@@ -24,7 +24,6 @@ const PageHeader = ({ title, onGoBack = null }) => {
 };
 
 const Wrapper = styled.View`
-    // flex: 1;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;

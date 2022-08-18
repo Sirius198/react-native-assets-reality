@@ -11,17 +11,11 @@ import IconWrapper from "../../common/base/IconWrapper";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import { useEffect, useState } from "react";
 
-export default function AssetQuickActionModal({ show, onClose, onNext }) {
-
-    const [actionType, setActionType] = useState(-1);
-
-    useEffect(() => {
-        setActionType(-1)
-    }, [show])
+export default function AssetQRCodeModal({ show, onClose, onOk }) {
 
     return (
         <BaseModal show={show}>
-            <ModalHeader onClose={onClose} showBackButton={false}>
+            <ModalHeader onClose={onClose}>
                 <TitleBar>
                     <MySVG.Bitcoin width={40} height={40} />
                     <View style={{ marginLeft: 15 }}>
@@ -36,31 +30,23 @@ export default function AssetQuickActionModal({ show, onClose, onNext }) {
 
             <Divider />
 
-            <Typography weight="Medium">Quick Action</Typography>
-            <Typography weight="Light" size={12} variant="secondary">Please make your selection</Typography>
+            <Typography weight="Medium">QR Code</Typography>
+            <Typography weight="Light" size={12} variant="secondary">Please scan this QR Code to add BTC</Typography>
 
-            <RadioCard
-                active={actionType === 0}
-                title="Withdraw"
-                subtitle="Lorem Ipsum is simply text the printing."
-                icon={<MySVG.Withdrawal style={{ color: actionType === 0 ? '#FFF' : '#3E7EFF' }} />}
-                onPress={() => setActionType(0)}
-            />
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <QRCodeWrapper>
+                    <Typography>QR Code</Typography>
+                </QRCodeWrapper>
+            </View>
 
-            <RadioCard
-                active={actionType === 1}
-                title="Deposit"
-                subtitle="Lorem Ipsum is simply text the printing."
-                icon={<MySVG.DollarCircle style={{ color: actionType === 1 ? '#FFF' : '#3E7EFF' }} />}
-            // onPress={() => setActionType(1)}
-            />
-
+            <View style={{ padding: 10 }}>
+                <Typography variant="secondary">Send only Binance-Peg-BTC (BEP20) to this address. Sending any other coins may result in Permanent Loss.</Typography>
+            </View>
+            
             <ModalDefaultActions
+                onOk={onOk}
                 onCancel={onClose}
-                onOk={() => {
-                    actionType != -1 && onNext()
-                }}
-                OkButtonText="Next"
+                OkButtonText="Copy"
             />
         </BaseModal>
     )
@@ -71,8 +57,13 @@ const TitleBar = styled.View`
     align-items: center;
 `;
 
-const ActionCard = styled(RadioCard)`
-    flex-direction: row;
+const QRCodeWrapper = styled.View`
+    border: 1px solid;
+    border-color: ${props => props.dark ? '#FFF' : '#F0F0FA'};
+    width: 295px;
+    height: 277px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 12px;
 `;

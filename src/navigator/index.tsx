@@ -10,8 +10,7 @@ import ActivityScreen from '../screens/activity';
 import ProifileScreen from '../screens/profile';
 import SettingsScreen from '../screens/settings';
 import CaseScreen from '../screens/case';
-// import CaseScreen2 from '../screens/case';
-// import MainHeader from './MainHeader';
+import ClientScreen from '../screens/client';
 
 function HomeScreen() {
     return (
@@ -20,13 +19,13 @@ function HomeScreen() {
         </View>
     );
 }
-function ClientScreen() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Client Screen</Text>
-        </View>
-    );
-}
+// function ClientScreen() {
+//     return (
+//         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//             <Text>Client Screen</Text>
+//         </View>
+//     );
+// }
 
 const TouchableWithoutFeedbackExample = () => {
     const [count, setCount] = useState(0);
