@@ -3,6 +3,7 @@ import { Text, View, Modal, TouchableOpacity } from "react-native";
 import styled from 'styled-components/native'
 import BaseModal from "../../common/modal";
 import ModalHeader from "../../common/modal/ModalHeader";
+import ModalTitle from "../../common/modal/ModalTitle";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
 
@@ -17,16 +18,10 @@ const coinList = [
 
 const WalletSelectModal = ({ show, onClose }) => {
 
-    const [visible, setVisible] = useState(show)
-
-    useEffect(() => {
-        setVisible(show);
-    }, [show]);
-
     return (
-        <BaseModal show={visible}>
+        <BaseModal show={show}>
             <ModalHeader onClose={onClose}>
-                <Typography size={18} weight="Bold">Select Wallet</Typography>
+                <ModalTitle title="Select Wallet" />
             </ModalHeader>
 
             <Typography weight="SemiBold" style={{ marginBottom: 10, marginTop: 10 }}>Coin List</Typography>

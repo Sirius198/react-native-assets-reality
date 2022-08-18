@@ -165,7 +165,7 @@ const commonStyles = StyleSheet.create({
 const Wrapper = styled.View`
     border-radius: 20px;
     padding: 20px;
-    margin-top: 10;
+    margin-top: 10px;
 `;
 
 const TextGroup = styled.View`

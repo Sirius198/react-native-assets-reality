@@ -10,10 +10,12 @@ import MenuPlusButton from "../../../components/common/buttons/MenuPlusButton";
 import MySVG from "../../../components/common/svg";
 import { useTheme } from "@react-navigation/native";
 import OutlineButton from "../../../components/common/buttons/OutlineButton";
+import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
 
 export default function CaseHome({ navigation }) {
 
-    const [walletSelectionModalVisible, setWalletSelectionModalVisible] = useState(false);
+    const [addCaseModalShow, setAddCaseModalShow] = useState(false);
+    const [coldWalletModalShow, setColdWalletModalShow] = useState(false);
     const { dark } = useTheme();
 
     useLayoutEffect(() => {
@@ -25,7 +27,7 @@ export default function CaseHome({ navigation }) {
             ),
             headerRight: () => (
                 <MenuPlusButton
-                    onPress={() => setWalletSelectionModalVisible(true)}
+                    onPress={() => setAddCaseModalShow(true)}
                 />
             ),
         })
@@ -33,6 +35,11 @@ export default function CaseHome({ navigation }) {
 
     const onInspect = (case_id) => {
         navigation.navigate("Inspect")
+    };
+
+    const onAddCase = (case_name) => {
+        setAddCaseModalShow(false)
+        console.log(case_name)
     };
 
     return (
@@ -52,7 +59,11 @@ export default function CaseHome({ navigation }) {
             <StatView portfolio={79} assets={32} terminated={2} active={12} />
 
             <View style={{ flexDirection: 'row' }}>
-                <OutlineButton text="Cold Wallet" style={{ flexGrow: 1 }} />
+                <OutlineButton
+                    text="Cold Wallet"
+                    style={{ flexGrow: 1 }}
+                    onPress={() => setColdWalletModalShow(true)}
+                />
                 <View style={{ flexGrow: 1 }} />
             </View>
 
@@ -60,6 +71,17 @@ export default function CaseHome({ navigation }) {
             {[1, 2, 3, 4, 5].map((_, index) => (
                 <CaseInfoPanel key={index} onInspect={onInspect} />
             ))}
+
+            <WalletSelectModal
+                show={coldWalletModalShow}
+                onClose={() => setColdWalletModalShow(false)}
+            />
+
+            <AddCaseModal
+                show={addCaseModalShow}
+                onClose={() => setAddCaseModalShow(false)}
+                onOk={(name) => onAddCase(name)}
+            />
         </Wrapper>
     )
 }

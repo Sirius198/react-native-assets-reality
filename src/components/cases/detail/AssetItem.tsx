@@ -1,15 +1,17 @@
 import { useTheme } from "@react-navigation/native";
-import { View } from "react-native"
+import { View, TouchableOpacity } from "react-native"
 // import { SvgUri } from "react-native-svg";
 import styled from "styled-components/native";
+import IconWrapper from "../../common/base/IconWrapper";
 import Divider from "../../common/divider";
+import MySVG from "../../common/svg";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
 
-const AssetItem = () => {
-    const { colors } = useTheme();
+const AssetItem = ({ onQuickAction }) => {
+    const { dark, colors } = useTheme();
     return (
-        <Wrapper style={{ backgroundColor: colors.card}}>
+        <Wrapper style={{ backgroundColor: colors.card }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 {/* <SvgUri
                     width="100"
@@ -45,7 +47,11 @@ const AssetItem = () => {
                     <Typography variant="secondary" size={12}>Balance</Typography>
                 </View>
 
-                <IconBox name="qrcode" color='#FAFAFF' />
+                <TouchableOpacity onPress={onQuickAction}>
+                    <IconWrapper size={42}>
+                        <MySVG.QRCode />
+                    </IconWrapper>
+                </TouchableOpacity>
             </Div>
         </Wrapper>
     )

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import AssetValueChart from '../../../components/cases/detail/AssetValueChart';
 import PortfolioButtons from '../../../components/cases/detail/PortfolioButtons';
 import PortfolioStat from '../../../components/cases/detail/PortfolioStat';
+import AddPortfolioModal from '../../../components/cases/modal/AddPortfolioModal';
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import Typography from '../../../components/common/typography/Typography';
@@ -11,6 +12,7 @@ import Typography from '../../../components/common/typography/Typography';
 const CaseInspectPage = ({ navigation }) => {
 
     const [activePortfolio, setActivePortfolio] = useState(0);
+    const [addPortfolioModalShow, setAddPortfolioModalShow] = useState(false);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -22,7 +24,7 @@ const CaseInspectPage = ({ navigation }) => {
             ),
             headerRight: () => (
                 <MenuPlusButton
-                    onPress={() => { }}
+                    onPress={() => setAddPortfolioModalShow(true)}
                 />
             ),
         })
@@ -80,6 +82,11 @@ const CaseInspectPage = ({ navigation }) => {
 
             {/* Portfolio Statistics */}
             <PortfolioStat />
+
+            <AddPortfolioModal
+                show={addPortfolioModalShow}
+                onClose={() => setAddPortfolioModalShow(false)}
+             />
 
             <View style={{ marginBottom: 40 }} />
         </Wrapper>

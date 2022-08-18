@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import { Text, View, Modal, TouchableOpacity } from "react-native";
 import styled from 'styled-components/native'
+import Divider from "../../common/divider";
+import FormInput from "../../common/form/FormInput";
+import FormLabel from "../../common/form/FormLabel";
 // import PrimaryButton from "../../common/buttons/PrimaryButton";
 import { Input } from "../../common/input/styles";
 import BaseModal, { ModalActions } from "../../common/modal";
+import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import ModalHeader from "../../common/modal/ModalHeader";
-import { Divider, SecondaryButton, PrimaryButton } from "../../common/styles";
+import { SecondaryButton, PrimaryButton } from "../../common/styles";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
 
-const AddCaseModal = ({ show }) => {
+const AddCaseModal = ({ show, onClose, onOk }) => {
 
     const [visible, setVisible] = useState(show)
+    const [caseName, setCaseName] = useState('')
 
     useEffect(() => {
         setVisible(show);
@@ -19,30 +24,31 @@ const AddCaseModal = ({ show }) => {
 
     return (
         <BaseModal show={visible}>
-            <ModalHeader showBackButton={false}>
+            <ModalHeader showBackButton={false} onClose={onClose}>
                 <Typography size={18}>Add Cases</Typography>
             </ModalHeader>
 
             <Wrapper>
-                <Typography>Case Name</Typography>
-                <Input placeholder="Case name" />
+                <FormLabel>Case Name</FormLabel>
+                <FormInput
+                    placeholder="Case name"
+                    value={caseName}
+                    onChange={({ text }) => setCaseName(text)}
+                />
 
-                <Typography>Portfolio</Typography>
+                {/* <Typography>Portfolio</Typography>
                 <AddPortfolioButtonWrapper>
                     <Typography style={{ textAlign: 'center' }}>+ Add Portfolio</Typography>
-                </AddPortfolioButtonWrapper>
+                </AddPortfolioButtonWrapper> */}
             </Wrapper>
 
             <Divider />
 
-            <ModalActions>
-                <SecondaryButton style={{ flex: 1 }}>
-                    <Typography>Cancel</Typography>
-                </SecondaryButton>
-                <PrimaryButton style={{ flex: 1 }}>
-                    <Typography style={{ color: 'white' }}>Done</Typography>
-                </PrimaryButton>
-            </ModalActions>
+            <ModalDefaultActions
+                OkButtonText="Done"
+                onOk={() => onOk(caseName)}
+                onCancel={onClose}
+            />
         </BaseModal>
     )
 };

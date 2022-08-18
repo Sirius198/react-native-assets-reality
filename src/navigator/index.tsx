@@ -2,7 +2,6 @@
 import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import SvgUri from 'react-native-svg-uri';
-import DetailPage from '../screens/cases/DetailPage';
 import MainTabBar from './MainTabBar';
 
 import React, { useState } from "react";

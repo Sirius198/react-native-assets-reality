@@ -33,7 +33,7 @@ const ModalContent = styled.View`
 `;
 
 const ModalBody = styled.View`
-    padding: 20px;
+    padding: 24px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 `;

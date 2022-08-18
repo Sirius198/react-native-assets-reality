@@ -25,6 +25,9 @@ import CountryUKSvg from "../../../assets/icons/country/uk.svg";
 
 // Common
 import SearchSvg from "../../../assets/icons/common/search_icon.svg";
+import QRCodeSvg from "../../../assets/icons/common/qrcode.svg";
+import WithdrawalSvg from "../../../assets/icons/common/withdrawal.svg";
+import DollarCircleSvg from "../../../assets/icons/common/dollar-circle.svg";
 
 // Country
 export const UK = props => <CountryUKSvg {...props} />
@@ -52,3 +55,6 @@ export const Email = props => <EmailSvg {...props} />
 export const Phone = props => <PhoneSvg {...props} />
 export const Download = props => <DownloadSvg {...props} />
 export const Search = props => <SearchSvg {...props} />
+export const QRCode = props => <QRCodeSvg {...props} />
+export const Withdrawal = props => <WithdrawalSvg {...props} />
+export const DollarCircle = props => <DollarCircleSvg {...props} />
