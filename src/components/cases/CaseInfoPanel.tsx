@@ -58,7 +58,7 @@ const CaseInfoPanel = ({ onInspect }) => {
                 <View style={{ flexDirection: 'row', }}>
                     <PrimaryButton
                         onPress={() => onInspect(1)}
-                        style={{ flexGrow: 1, marginRight: 10 }}
+                        style={{ flex: 1, marginRight: 10 }}
                     >
                         Inspect
                     </PrimaryButton>
@@ -192,7 +192,6 @@ const ExpandButton = styled.TouchableOpacity`
 `;
 
 const Row = styled.View`
-    flex: 1;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

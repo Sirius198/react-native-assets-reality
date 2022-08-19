@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import styled from 'styled-components/native'
 import IconBox from "../components/common/svg/IconBox";
+import MySVG from "../components/common/svg";
 
 const MainTabBar = ({ navInfo }) => {
 
@@ -26,11 +27,11 @@ const MainTabBar = ({ navInfo }) => {
                             justifyContent: 'center'
                         }}
                     >
-                        {index === 0 && (activeNavId == 0 ? <IconBox name="nav-case2" /> : <IconBox name="nav-case" />)}
-                        {index === 1 && (activeNavId == 1 ? <IconBox name="nav-client2" /> : <IconBox name="nav-client" />)}
-                        {index === 2 && (activeNavId == 2 ? <IconBox name="nav-activity2" /> : <IconBox name="nav-activity" />)}
-                        {index === 3 && (activeNavId == 3 ? <IconBox name="nav-setting2" /> : <IconBox name="nav-setting" />)}
-                        {index === 4 && (activeNavId == 4 ? <IconBox name="nav-profile2" /> : <IconBox name="nav-profile" />)}
+                        {index === 0 && (activeNavId == 0 ? <MySVG.NavCase2 /> : <MySVG.NavCase />)}
+                        {index === 1 && (activeNavId == 1 ? <MySVG.NavClient2 /> : <MySVG.NavClient />)}
+                        {index === 2 && (activeNavId == 2 ? <MySVG.NavActivity2 /> : <MySVG.NavActivity />)}
+                        {index === 3 && (activeNavId == 3 ? <MySVG.NavSetting2 /> : <MySVG.NavSetting />)}
+                        {index === 4 && (activeNavId == 4 ? <MySVG.NavProfile2 /> : <MySVG.NavProfile />)}
                     </LinearGradient>
                 </TabButton>
             ))}

@@ -1,3 +1,3 @@
-import * as MySVG from './MyIcon'
+import * as MySVG from './TestSvg'
 
 export default MySVG;

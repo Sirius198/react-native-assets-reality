@@ -1,12 +1,18 @@
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 
-export default function PrimaryButton({ children, style = {}, onPress = null, ...rest }) {
+export default function PrimaryButton({ children, onPress = null, ...rest }) {
     return (
-        <TouchableOpacity onPress={onPress} style={{ ...styles.container, ...style }} {...rest}>
+        <Wrapper onPress={onPress} {...rest}>
             <Text style={styles.innerText}>{children}</Text>
-        </TouchableOpacity>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.TouchableOpacity`
+    background-color: #3e7eff;
+    border-radius: 10px;
+`;
 
 const styles = StyleSheet.create({
     container: {

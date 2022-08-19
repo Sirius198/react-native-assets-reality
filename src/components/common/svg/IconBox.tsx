@@ -40,6 +40,8 @@ import QrCodeSvg from "../../../assets/icons/qrcode.svg";
 
 const IconBox = ({ name, color = null, width = 20, height = 20, radius = 10, ...rest }) => {
 
+    return <></>
+
     let icon = <View />;
     if (name == 'withdrawal') icon = <WithdrawalSvg width={width} height={height} {...rest} />
     else if (name == 'receive') icon = <ReceiveSvg width={width} height={height} {...rest} />

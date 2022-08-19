@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import ModalDropdown from 'react-native-modal-dropdown';
+// import ModalDropdown from 'react-native-modal-dropdown';
 import RadioCard from "../../common/base/RadioCard";
 import BaseModal from "../../common/modal";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
@@ -127,11 +127,11 @@ const ScrollViewWrapper = styled.ScrollView`
     height: 60%;
 `;
 
-const MyDD = styled(ModalDropdown)`
-    padding: 11px 20px;
-    border: 1px solid;
-    border-color: ${props => props.dark ? '#353946' : '#E7E8EF'};
-    background-color: ${props => props.dark ? 'rgba(53, 57, 70, 0.25)' : 'rgba(45, 116, 255, 0.02)'};
-    border-radius: 8px;
+// const MyDD = styled(ModalDropdown)`
+//     padding: 11px 20px;
+//     border: 1px solid;
+//     border-color: ${props => props.dark ? '#353946' : '#E7E8EF'};
+//     background-color: ${props => props.dark ? 'rgba(53, 57, 70, 0.25)' : 'rgba(45, 116, 255, 0.02)'};
+//     border-radius: 8px;
 
-`;
+// `;
