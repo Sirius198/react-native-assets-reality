@@ -39,7 +39,7 @@ export default function TotalAssetsPage({ navigation }) {
         <Wrapper>
             <SearchBox style={{ marginBottom: 16 }} />
 
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+            {[1, 2,].map((_, index) => (
                 <AssetItem key={index} onQuickAction={() => doQuickAction()} />
             ))}
 

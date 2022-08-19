@@ -38,6 +38,17 @@ const FormInput = ({ placeholder = "", variant = "primary", ...rest }) => {
             />
         )
     }
+    else {
+        return (
+            <Wrapper4
+                placeholder={placeholder}
+                placeholderTextColor="#8A8B9D"
+                dark={dark}
+                variant={variant}
+                {...rest}
+            />
+        )
+    }
 
     return <TextInput />
 }
@@ -62,6 +73,11 @@ const WrapperSecondary = styled(Wrapper)`
 const WrapperThird = styled(Wrapper)`
     background-color: ${({ dark }) => dark ? '#242731' : '#FFF'};
     border-color: ${({ dark }) => dark ? '#242731' : 'rgba(35, 38, 47, 0.1)'};
+`;
+
+const Wrapper4 = styled(Wrapper)`
+    background-color: ${({ dark }) => dark ? '#1F2128' : '#F8F9FB'};
+    border-color: ${({ dark }) => dark ? '#1F2128' : '#E3E4E7'};
 `;
 
 export default FormInput

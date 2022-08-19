@@ -1,12 +1,16 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { View } from "react-native";
 import MenuPlusButton from "../../../components/common/buttons/MenuPlusButton";
 import Typography from "../../../components/common/typography/Typography";
 import styled from 'styled-components/native';
 import SearchBox from "../../../components/common/input/SearchBox";
 import ClientCard from "../../../components/client/ClientCard";
+import CreateClientModal from "../../../components/client/modal/CreateClientModal";
 
 export default function ClientHome({ navigation }) {
+
+    const [showCreateModal, setShowCreateModal] = useState(false);
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: () => (
@@ -17,7 +21,7 @@ export default function ClientHome({ navigation }) {
             ),
             headerRight: () => (
                 <MenuPlusButton
-                    onPress={() => { }}
+                    onPress={() => setShowCreateModal(true)}
                 />
             ),
         })
@@ -37,6 +41,11 @@ export default function ClientHome({ navigation }) {
                     onPress={(client_id) => goToDetail(client_id)}
                 />
             ))}
+
+            <CreateClientModal
+                show={showCreateModal}
+                onClose={() => setShowCreateModal(false)}
+            />
         </Wrapper>
     )
 }

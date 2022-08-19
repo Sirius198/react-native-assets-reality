@@ -13,7 +13,12 @@ export default function CaseScreen() {
 
     return (
         <NavigationContainer independent={true} theme={theme}>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{
+                headerStyle: {
+                    backgroundColor: theme.colors.background,
+                },
+                headerShadowVisible: false
+            }}>
                 <Stack.Screen name="Home" component={CaseHome} />
                 <Stack.Screen name="Inspect" component={CaseInspectPage} />
                 <Stack.Screen name="Assets" component={TotalAssetsPage} />

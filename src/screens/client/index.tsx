@@ -10,13 +10,13 @@ export default function ClientScreen() {
 
     return (
         <NavigationContainer independent={true} theme={theme}>
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={ClientHome} options={{
-                    headerStyle: {
-                        backgroundColor: theme.colors.background,
-                    },
-                    headerShadowVisible: false
-                }}/>
+            <Stack.Navigator screenOptions={{
+                headerStyle: {
+                    backgroundColor: theme.colors.background,
+                },
+                headerShadowVisible: false
+            }}>
+                <Stack.Screen name="Home" component={ClientHome} />
                 <Stack.Screen name="Detail" component={ClientDetailPage} />
             </Stack.Navigator>
         </NavigationContainer>

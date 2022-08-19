@@ -20,19 +20,19 @@ const OrganisationEditModal = ({ show, onClose }) => {
             </ModalHeader>
 
             <FormLabel>Organisation name</FormLabel>
-            <FormInput placeholder="Client Contact Person" />
+            <FormInput variant={"4"} placeholder="Client Contact Person" />
 
             <FormLabel>Address</FormLabel>
-            <FormInput placeholder="Kemp House, 152-160 City Road, London" />
+            <FormInput variant={"4"} placeholder="Kemp House, 152-160 City Road, London" />
 
             <FormLabel>Phone Number</FormLabel>
-            <FormInput />
+            <FormInput variant={"4"} />
 
             <FormLabel>Email</FormLabel>
-            <FormInput placeholder="elliot@assetreality.io" />
+            <FormInput variant={"4"} placeholder="elliot@assetreality.io" />
 
             <FormLabel>Country</FormLabel>
-            <FormInput placeholder="United Kingdom" />
+            <FormInput variant={"4"} placeholder="United Kingdom" />
 
             <ModalDefaultActions
                 OkButtonText="Update"

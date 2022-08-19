@@ -17,7 +17,12 @@ const SettingsScreen = () => {
 
     return (
         <NavigationContainer independent={true} theme={theme}>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{
+                headerStyle: {
+                    backgroundColor: theme.colors.background,
+                },
+                headerShadowVisible: false
+            }}>
                 <Stack.Screen name="Home" component={SettingsHome} />
                 <Stack.Screen name="Org" component={SettingsOrganization} />
                 <Stack.Screen name="User" component={SettingsUser} />

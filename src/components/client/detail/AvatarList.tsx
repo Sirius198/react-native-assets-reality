@@ -18,7 +18,7 @@ export default function AvatarList() {
 }
 
 const Wrapper = styled.ScrollView`
-    // background-color: yellow;
     padding: 0;
     flex-grow: 0;
+    margin-top: 16px;
 `;

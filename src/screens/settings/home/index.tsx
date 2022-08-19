@@ -16,9 +16,12 @@ const SettingsHome = ({ navigation }) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle: 'Settings'
+            headerTitle: 'Settings',
+            headerStyle: {
+                backgroundColor: dark ? '#1F2128' : '#FFF'
+            }
         });
-    }, []);
+    }, [dark]);
 
     return (
         <Wrapper style={{ backgroundColor: dark ? '#1F2128' : colors.card }}>
