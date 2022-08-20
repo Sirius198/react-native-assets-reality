@@ -4,6 +4,8 @@ import Typography from "../../common/typography/Typography";
 import IconBox from "../../common/svg/IconBox";
 import Divider from "../../common/divider";
 import { useTheme } from "@react-navigation/native";
+import IconWrapper from "../../common/base/IconWrapper";
+import MySVG from "../../common/svg";
 
 const ActivityItem = () => {
 
@@ -12,15 +14,20 @@ const ActivityItem = () => {
     return (
         <Wrapper style={{ backgroundColor: colors.card }}>
             <Row>
-                <Row>
-                    <IconBox name="withdrawal" color="blue" />
+                <Row style={{ flexGrow: 1 }}>
+                    <IconWrapper style={{ backgroundColor: 'rgba(62, 126, 255, 0.1)' }}>
+                        <MySVG.Withdrawal style={{ color: '#3E7EFF' }} />
+                    </IconWrapper>
+                    {/* <IconBox name="withdrawal" color="blue" /> */}
                     <TextGroup>
                         <Typography weight="SemiBold">Withdrawal</Typography>
                         <Typography variant="secondary" size={12}>9:40 AM</Typography>
                     </TextGroup>
                 </Row>
-                <Row>
-                    <IconBox name="from" color="pink" />
+                <Row style={{ flexGrow: 1 }}>
+                    <IconWrapper style={{ backgroundColor: 'rgba(138, 62, 255, 0.06)' }}>
+                        <MySVG.From style={{ color: '#8A3EFF' }} />
+                    </IconWrapper>
                     <TextGroup>
                         <Typography weight="SemiBold">From</Typography>
                         <Typography variant="secondary" size={12}>0xd123...229</Typography>
@@ -31,15 +38,19 @@ const ActivityItem = () => {
             <Divider />
 
             <Row>
-                <Row>
-                    <IconBox name="amount" color="red" />
+                <Row style={{ flexGrow: 1 }}>
+                    <IconWrapper style={{ backgroundColor: 'rgba(242, 147, 57, 0.1)' }}>
+                        <MySVG.DollarCircle style={{ color: '#F29339' }} />
+                    </IconWrapper>
                     <TextGroup>
                         <Typography weight="SemiBold">Amount</Typography>
                         <Typography variant="secondary" size={12}>+22.54BTC</Typography>
                     </TextGroup>
                 </Row>
-                <Row>
-                    <IconBox name="gasfee" color="green" />
+                <Row style={{ flexGrow: 1 }}>
+                    <IconWrapper style={{ backgroundColor: 'rgba(95, 220, 179, 0.13)' }}>
+                        <MySVG.Gas style={{ color: '#1BE3A2' }} />
+                    </IconWrapper>
                     <TextGroup>
                         <Typography weight="SemiBold">Gas Fee</Typography>
                         <Typography variant="secondary" size={12}>0.0523 BNB</Typography>
@@ -51,7 +62,9 @@ const ActivityItem = () => {
 
             <Row style={{ justifyContent: 'space-between' }}>
                 <Row>
-                    <IconBox name="binance" color="yellow" />
+                    <IconWrapper style={{ backgroundColor: 'rgba(240, 185, 11, 0.1)' }}>
+                        <MySVG.Binance style={{ color: '#F0B90B' }} />
+                    </IconWrapper>
                     <TextGroup>
                         <Typography weight="SemiBold">Binance Smart Chain</Typography>
                         <Typography variant="secondary" size={12}>0.0523 BNB</Typography>
@@ -70,7 +83,6 @@ const Wrapper = styled.View`
 `;
 
 const Row = styled.View`
-    flex: 1;
     flex-direction: row;
     align-items: center;
 `;

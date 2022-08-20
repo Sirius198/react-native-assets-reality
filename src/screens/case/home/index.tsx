@@ -11,7 +11,7 @@ import MySVG from "../../../components/common/svg";
 import { useTheme } from "@react-navigation/native";
 import OutlineButton from "../../../components/common/buttons/OutlineButton";
 import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
-import TestSvg from "../../../components/common/svg/TestSvg";
+import TestSvg from "../../../components/common/svg/AllSvg";
 
 export default function CaseHome({ navigation }) {
 
@@ -47,7 +47,7 @@ export default function CaseHome({ navigation }) {
         <Wrapper>
             <Div style={{ marginBottom: 15 }}>
                 <TotalValueIconWrapper dark={dark}>
-                    <TestSvg style={{ color: dark ? '#FFF' : '#23262F' }} />
+                    {/* <TestSvg style={{ color: dark ? '#FFF' : '#23262F' }} /> */}
                     {/* <MySVG.Trash style={{ color: dark ? '#FFF' : '#23262F' }} /> */}
                 </TotalValueIconWrapper>
 
