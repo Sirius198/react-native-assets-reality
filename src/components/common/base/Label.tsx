@@ -18,17 +18,20 @@ const Label = ({ variant = "primary", children, ...rest }) => {
 };
 
 const Wrapper = styled.View`
-    padding: 10px 20px;
+    padding: 7px 20px;
     border-radius: 100px;
     border: 1px solid;
     background-color: ${({ variant, dark }) => {
-        if (variant === "info") return 'rgba(32, 197, 77, 0.05)';
+        // if (variant === "info") return 'rgba(32, 197, 77, 0.05)';
+        if (variant === "info")
+            return dark ? '#243033' : '#F0FEF1';
         if (variant === "primary")
             return dark ? "#282C36" : "#F5F9FF";
         return "";
     }};
     border-color: ${({ variant, dark }) => {
-        if (variant === "info") return 'rgba(32, 197, 77, 0.05)';
+        if (variant === "info")
+            return dark ? '#243033' : '#F0FEF1';
         if (variant === "primary")
             return dark ? "#282C36" : "#F5F9FF";
         return "";

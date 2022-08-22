@@ -11,7 +11,8 @@ import MySVG from "../../../components/common/svg";
 import { useTheme } from "@react-navigation/native";
 import OutlineButton from "../../../components/common/buttons/OutlineButton";
 import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
-import TestSvg from "../../../components/common/svg/AllSvg";
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
+import { WalletSvg } from "../../../components/common/svg/TestSvg";
 
 export default function CaseHome({ navigation }) {
 
@@ -44,11 +45,10 @@ export default function CaseHome({ navigation }) {
     };
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             <Div style={{ marginBottom: 15 }}>
                 <TotalValueIconWrapper dark={dark}>
-                    {/* <TestSvg style={{ color: dark ? '#FFF' : '#23262F' }} /> */}
-                    {/* <MySVG.Trash style={{ color: dark ? '#FFF' : '#23262F' }} /> */}
+                    <MySVG.Wallet style={{ color: dark ? '#FFF' : '#23262F' }} width={23} height={23} />
                 </TotalValueIconWrapper>
 
                 <View style={{ marginLeft: 15 }}>
@@ -84,13 +84,9 @@ export default function CaseHome({ navigation }) {
                 onClose={() => setAddCaseModalShow(false)}
                 onOk={(name) => onAddCase(name)}
             />
-        </Wrapper>
+        </MainContentWrapper>
     )
 }
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 const Div = styled.View`
     flex-direction: row;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { TouchableOpacity, View, Text, StyleSheet, ScrollView } from "react-native"
 import Typography from "../../common/typography/Typography";
+import styled from 'styled-components/native';
 
-const PortfolioButtons = ({activeId, onChange}) => {
-    const styles = buttonListStyles;
+const PortfolioButtons = ({ activeId, onChange }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
         setActiveIndex(activeId);
@@ -16,7 +16,7 @@ const PortfolioButtons = ({activeId, onChange}) => {
                     key={index}
                     active={index === activeIndex}
                     index={index}
-                    onPress={i => {setActiveIndex(i); onChange(i); }}
+                    onPress={i => { setActiveIndex(i); onChange(i); }}
                 />
             ))}
         </ScrollView>
@@ -24,64 +24,26 @@ const PortfolioButtons = ({activeId, onChange}) => {
 };
 
 const PfButton = ({ active, index, onPress }) => {
-    const styles = buttonStyle;
     return (
-        <TouchableOpacity
-            style={{
-                ...styles.container,
-                ...(active ? styles.activeColor : styles.normalColor)
-            }}
-            onPress={() => onPress(index)}
-        >
+        <PfButtonWrapper active={active} onPress={() => onPress(index)}>
             <Typography
-                style={{
-                    ...styles.innerText,
-                    ...(active ? styles.innerTextActiveColor : styles.innerTextNormalColor)
-                }}
-                // variant={active ? 'primary' : 'secondary'}
+                size={14}
+                weight={active ? "SemiBold" : "Regular"}
+                variant={active ? "active" : "secondary"}
             >
                 Portfolio {index + 1}
             </Typography>
-            {/* <Text ></Text> */}
-        </TouchableOpacity>
+        </PfButtonWrapper>
     )
 }
 
-const buttonListStyles = StyleSheet.create({
-    container: {
-
-    }
-});
-
-const buttonStyle = StyleSheet.create({
-    container: {
-        marginRight: 30,
-        // marginLeft: 40,
-        marginTop: 10,
-        paddingTop: 10,
-        paddingBottom: 10,
-        borderRadius: 10,
-        borderWidth: 1,
-    },
-    activeColor: {
-        backgroundColor: '#3e7eff',
-        borderColor: '#3e7eff'
-    },
-    normalColor: {
-        borderColor: '#EFEFFA',
-        // borderColor: 'red',
-    },
-    innerText: {
-        textAlign: 'center',
-        paddingLeft: 10,
-        paddingRight: 10
-    },
-    innerTextActiveColor: {
-        color: '#fff',
-    },
-    innerTextNormalColor: {
-        color: '#8a8b9d',
-    }
-});
+const PfButtonWrapper = styled.TouchableOpacity`
+    padding: 14px 16px;
+    margin-right: 16px;
+    border-radius: 10px;
+    background-color: ${props => props.active ? "#3E7EFF" : 'transparent'};
+    border: 1px solid;
+    border-color: ${props => props.active ? "#3E7EFF" : "#EFEFFA"};
+`;
 
 export default PortfolioButtons;

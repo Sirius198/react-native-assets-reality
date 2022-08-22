@@ -25,19 +25,19 @@ export default function AssetQuickActionModal({ show, onClose, onNext }) {
                 <TitleBar>
                     <MySVG.Bitcoin width={40} height={40} />
                     <View style={{ marginLeft: 15 }}>
-                        <ModalTitle title="BTC" />
+                        <ModalTitle title="BTC" weight="Bold" />
                         <Typography variant="secondary">Bitcoin</Typography>
                     </View>
                 </TitleBar>
             </ModalHeader>
 
-            <Typography weight="Light" size={12} variant="secondary">Total</Typography>
+            <Typography weight="Light" size={12} variant="secondary" mb={8}>Total</Typography>
             <Typography weight="Medium">0.244</Typography>
 
             <Divider />
 
-            <Typography weight="Medium">Quick Action</Typography>
-            <Typography weight="Light" size={12} variant="secondary">Please make your selection</Typography>
+            <Typography weight="Medium" mb={8}>Quick Action</Typography>
+            <Typography weight="Light" size={12} variant="secondary" mb={15}>Please make your selection</Typography>
 
             <RadioCard
                 active={actionType === 0}

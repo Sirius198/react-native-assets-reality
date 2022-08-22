@@ -6,6 +6,7 @@ import AddAssetModal from '../../../components/cases/modal/AddAssetModal';
 import AssetQRCodeModal from '../../../components/cases/modal/AssetQRCodeModal';
 import AssetQuickActionModal from '../../../components/cases/modal/AssetQuickActionModal';
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
+import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import SearchBox from '../../../components/common/input/SearchBox';
 import Typography from '../../../components/common/typography/Typography';
 
@@ -42,6 +43,8 @@ export default function TotalAssetsPage({ navigation }) {
             {[1, 2,].map((_, index) => (
                 <AssetItem key={index} onQuickAction={() => doQuickAction()} />
             ))}
+
+            <OutlineButton text="View More" />
 
             <AddAssetModal
                 show={showAddAssetModal}

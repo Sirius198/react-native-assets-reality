@@ -1,8 +1,8 @@
 import Typography from "../typography/Typography"
 
-const ModalTitle = ({ title, ...rest }) => {
+const ModalTitle = ({ title, weight = "SemiBold", ...rest }) => {
     return (
-        <Typography weight="SemiBold" size={18} {...rest}>{title}</Typography>
+        <Typography weight={weight} size={18} {...rest}>{title}</Typography>
     )
 }
 

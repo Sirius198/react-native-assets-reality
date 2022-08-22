@@ -15,7 +15,10 @@ const Typography = ({
     weight = 'Regular',
     size = 14,
     align = 'left',
-    // right = false,
+    mr = 0,
+    ml = 0,
+    mt = 0,
+    mb = 0,
     children,
     ...rest
 }) => {
@@ -23,25 +26,21 @@ const Typography = ({
     const { dark } = useTheme();
 
     return (
-        <Wrapper fontSize={size} variant={variant} dark={dark} weight={weight} align={align} {...rest}>
+        <Wrapper
+            fontSize={size}
+            variant={variant}
+            dark={dark}
+            weight={weight}
+            align={align}
+            {...rest}
+            mt={mt}
+            mr={mr}
+            mb={mb}
+            ml={ml}
+        >
             {children}
         </Wrapper>
     )
-
-    // return (
-    //     <Text
-    //         style={{
-    //             ...(dark ? darkStyles[variant] : lightStyles[variant]),
-    //             fontSize: size,
-    //             textAlign: align,
-    //             // ...(right && { textAlign: 'right' }),
-    //             fontFamily: 'FF_' + weight,
-    //         }}
-    //         {...rest}
-    //     >
-    //         {children}
-    //     </Text>
-    // )
 }
 
 const Wrapper = styled.Text`
@@ -60,6 +59,10 @@ const Wrapper = styled.Text`
         else if (variant === 'active')
             return '#FFF';
     }};
+    margin-top: ${props => props.mt}px;
+    margin-right: ${props => props.mr}px;
+    margin-bottom: ${props => props.mb}px;
+    margin-left: ${props => props.ml}px;
 `;
 
 const lightStyles = StyleSheet.create({

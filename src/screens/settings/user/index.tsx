@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { View, TouchableOpacity } from "react-native";
 import styled from 'styled-components/native';
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 import MenuPlusButton from "../../../components/common/buttons/MenuPlusButton";
 import Typography from "../../../components/common/typography/Typography";
 import InviteMemberModal from "../../../components/settings/user/modal/InviteMemberModal";
@@ -52,7 +53,7 @@ const SettingsUser = ({ navigation }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             <SimpleTab list={['Admins', 'Users', 'Viewers']} />
 
             <Typography weight="SemiBold" size={20} style={{ marginTop: 14 }}>
@@ -104,12 +105,8 @@ const SettingsUser = ({ navigation }) => {
                 onClose={() => setInviteModalShow(false)}
             />
 
-        </Wrapper>
+        </MainContentWrapper>
     )
 };
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 export default SettingsUser

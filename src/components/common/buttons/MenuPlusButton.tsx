@@ -10,7 +10,8 @@ const MenuPlusButton = ({ name = "plus", ...rest }) => {
 };
 
 const Wrapper = styled.TouchableOpacity`
-    padding: 13px;
+    width: 38px;
+    height: 38px;
     border-radius: 15px;
     align-items: center;
     justify-content: center;

@@ -1,7 +1,5 @@
 import * as React from "react"
 import Svg, { Path, Rect, SvgUri, SvgXml } from "react-native-svg"
-import BitcoinSvg from "../../../assets/icons/crypto/btc_icon.svg";
-import EthereumSvg from "../../../assets/icons/crypto/eth_icon.svg";
 import CardanoSvg from "../../../assets/icons/crypto/cardano_icon.svg";
 import RippleSvg from "../../../assets/icons/crypto/xrp_icon.svg";
 import SolanaSvg from "../../../assets/icons/crypto/solana_icon.svg";
@@ -15,6 +13,7 @@ const TestSvg = (props) => (
     <Svg
         width={20}
         height={22}
+        viewBox="0 0 20 22"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -34,6 +33,7 @@ export const Bitcoin = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -52,6 +52,7 @@ export const Ethereum = props => (
         width={30}
         height={30}
         fill="none"
+        viewBox="0 0 30 30"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -82,6 +83,7 @@ export const User = props => (
         width={26}
         height={26}
         fill="currentColor"
+        viewBox="0 0 26 26"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -96,6 +98,7 @@ export const EmailSettings = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -111,6 +114,7 @@ export const Invoice = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -126,6 +130,7 @@ export const Group = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -141,6 +146,7 @@ export const UserPlus = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -156,6 +162,7 @@ export const Organisation = props => (
     <Svg
         width={26}
         height={18}
+        viewBox="0 0 26 18"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -171,6 +178,7 @@ export const OrganisationName = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -186,6 +194,7 @@ export const Trash = props => (
     <Svg
         width={14}
         height={16}
+        viewBox="0 0 14 16"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -197,6 +206,7 @@ export const Flag = props => (
     <Svg
         width={18}
         height={22}
+        viewBox="0 0 18 22"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -212,6 +222,7 @@ export const Location = props => (
     <Svg
         width={22}
         height={26}
+        viewBox="0 0 22 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -227,6 +238,7 @@ export const Email = props => (
     <Svg
         width={26}
         height={26}
+        viewBox="0 0 26 26"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -243,6 +255,7 @@ export const Phone = props => (
     <Svg
         width={24}
         height={24}
+        viewBox="0 0 24 24"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -258,6 +271,7 @@ export const Download = props => (
     <Svg
         width={16}
         height={16}
+        viewBox="0 0 16 16"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -273,6 +287,7 @@ export const Search = props => (
     <Svg
         width={15}
         height={15}
+        viewBox="0 0 15 15"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -293,6 +308,7 @@ export const QRCode = props => (
     <Svg
         width={20}
         height={20}
+        viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -309,6 +325,7 @@ export const Withdrawal = props => (
     <Svg
         width={20}
         height={22}
+        viewBox="0 0 20 22"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -324,6 +341,7 @@ export const DollarCircle = props => (
     <Svg
         width={22}
         height={20}
+        viewBox="0 0 22 20"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -339,6 +357,7 @@ export const Copy = props => (
     <Svg
         width={12}
         height={12}
+        viewBox="0 0 12 12"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -355,6 +374,7 @@ export const NavCase = props => (
     <Svg
         width={20}
         height={20}
+        viewBox="0 0 20 20"
         stroke="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -383,6 +403,7 @@ export const NavCase2 = props => (
     <Svg
         width={22}
         height={22}
+        viewBox="0 0 22 22"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -403,6 +424,7 @@ export const NavClient = props => (
     <Svg
         width={21}
         height={18}
+        viewBox="0 0 21 18"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -419,6 +441,7 @@ export const NavClient2 = props => (
     <Svg
         width={21}
         height={19}
+        viewBox="0 0 21 19"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -445,6 +468,7 @@ export const NavActivity = props => (
     <Svg
         width={21}
         height={20}
+        viewBox="0 0 21 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -467,6 +491,7 @@ export const NavActivity2 = props => (
     <Svg
         width={21}
         height={20}
+        viewBox="0 0 21 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -483,6 +508,7 @@ export const NavSetting = props => (
     <Svg
         width={20}
         height={20}
+        viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -499,6 +525,7 @@ export const NavSetting2 = props => (
     <Svg
         width={21}
         height={20}
+        viewBox="0 0 21 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -515,6 +542,7 @@ export const NavProfile = props => (
     <Svg
         width={18}
         height={22}
+        viewBox="0 0 18 22"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -532,6 +560,7 @@ export const NavProfile2 = props => (
     <Svg
         width={16}
         height={20}
+        viewBox="0 0 16 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -547,6 +576,7 @@ export const From = props => (
     <Svg
         width={20}
         height={20}
+        viewBox="0 0 20 20"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -563,6 +593,7 @@ export const Gas = props => (
     <Svg
         width={23}
         height={23}
+        viewBox="0 0 23 23"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
@@ -580,12 +611,82 @@ export const Binance = props => (
     <Svg
         width={24}
         height={24}
+        viewBox="0 0 24 24"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
         <Path
             d="M5.935 11.667 3.31 14.31.667 11.667 3.31 9.024l2.625 2.643Zm6.398-6.399 4.521 4.521 2.643-2.643-4.52-4.503L12.332 0 5.187 7.146l2.644 2.643 4.502-4.52Zm9.024 3.756-2.625 2.643 2.643 2.643L24 11.667l-2.643-2.643Zm-9.024 9.041-4.52-4.52-2.626 2.643 7.146 7.146 7.164-7.165-2.643-2.625-4.52 4.521Zm0-3.755 2.643-2.643-2.643-2.643-2.643 2.643 2.643 2.643Z"
+        />
+    </Svg>
+)
+
+export const Wallet = props => (
+    <Svg
+        width={24}
+        height={24}
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        {...props}
+    >
+        <Path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M15.4449 2.75217C13.1754 2.24928 10.8233 2.24928 8.55381 2.75217L8.02429 2.8695C5.17 3.50197 2.9196 5.69626 2.21485 8.53441C1.64974 10.8102 1.64974 13.1898 2.21485 15.4656C2.9196 18.3037 5.16999 20.498 8.02429 21.1305L8.55381 21.2478C10.8233 21.7507 13.1754 21.7507 15.4449 21.2478L15.9744 21.1305C18.7128 20.5237 20.8954 18.4794 21.6904 15.8081C21.0176 15.9129 20.3284 15.9052 19.6513 15.7817L19.5829 15.7693C18.1067 15.5001 16.9113 14.4162 16.4992 12.9732C16.3175 12.3371 16.3175 11.6629 16.4992 11.0268C16.9113 9.58384 18.1067 8.49989 19.5829 8.23073L19.6513 8.21826C20.3284 8.0948 21.0176 8.08714 21.6904 8.19194C20.8954 5.52064 18.7128 3.47629 15.9744 2.8695L15.4449 2.75217ZM22.0784 10.0763C21.3981 9.8589 20.6724 9.81094 19.9652 9.93988L19.8968 9.95235C19.076 10.102 18.4112 10.7048 18.1819 11.5074C18.0899 11.8294 18.0899 12.1706 18.1819 12.4926C18.4112 13.2952 19.076 13.898 19.8968 14.0477L19.9652 14.0601C20.6724 14.1891 21.3981 14.1411 22.0784 13.9237C22.2508 12.647 22.2508 11.353 22.0784 10.0763ZM8.17522 1.04361C10.6941 0.485463 13.3046 0.485463 15.8235 1.04361L16.353 1.16094C19.856 1.93715 22.6175 4.63003 23.4823 8.11268C24.1162 10.6655 24.1162 13.3346 23.4823 15.8873C22.6175 19.37 19.856 22.0629 16.353 22.8391L15.8235 22.9564C13.3046 23.5145 10.6941 23.5145 8.17522 22.9564L7.6457 22.8391C4.14273 22.0629 1.38121 19.37 0.51643 15.8873C-0.117456 13.3346 -0.117456 10.6654 0.51643 8.11267C1.38121 4.63002 4.14274 1.93715 7.6457 1.16094L7.835 2.01522L7.6457 1.16094L8.17522 1.04361ZM12.0004 9.375H7.33376C6.85051 9.375 6.45876 8.98325 6.45876 8.5C6.45876 8.01675 6.85051 7.625 7.33376 7.625L12.0004 7.625C12.4837 7.625 12.8754 8.01675 12.8754 8.5C12.8754 8.98325 12.4837 9.375 12.0004 9.375Z"
+        />
+    </Svg>
+)
+
+export const AngleLeft = props => (
+    <Svg
+        width={8}
+        height={15}
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 8 15"
+        {...props}
+    >
+        <Path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M7.69046 1.26467C8.0471 1.62131 8.0471 2.19954 7.69046 2.55619L2.24796 7.99868L7.69046 13.4412C8.0471 13.7978 8.0471 14.376 7.69046 14.7327C7.33382 15.0893 6.75559 15.0893 6.39894 14.7327L0.310694 8.64444C0.139429 8.47317 0.0432129 8.24089 0.0432129 7.99868C0.0432129 7.75647 0.139429 7.52419 0.310694 7.35292L6.39894 1.26467C6.75559 0.908032 7.33382 0.908032 7.69046 1.26467Z"
+        />
+    </Svg>
+)
+
+export const XIcon = props => (
+    <Svg
+        width={14}
+        height={14}
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 14 14"
+        {...props}
+    >
+        <Path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M8.12736 7.00012L12.9197 11.7927C13.2316 12.1045 13.2316 12.6085 12.9197 12.9202C12.608 13.232 12.104 13.232 11.7922 12.9202L6.99972 8.12763L2.20735 12.9202C1.89547 13.232 1.39159 13.232 1.07986 12.9202C0.767977 12.6085 0.767977 12.1045 1.07986 11.7927L5.87222 7.00012L1.07986 2.2075C0.767977 1.89576 0.767977 1.39172 1.07986 1.07998C1.23521 0.924479 1.43948 0.846361 1.6436 0.846361C1.84773 0.846361 2.05185 0.924479 2.20735 1.07998L6.99972 5.8726L11.7922 1.07998C11.9477 0.924479 12.1519 0.846361 12.356 0.846361C12.5601 0.846361 12.7642 0.924479 12.9197 1.07998C13.2316 1.39172 13.2316 1.89576 12.9197 2.2075L8.12736 7.00012Z"
+        />
+    </Svg>
+)
+
+export const BadgeTick = props => (
+    <Svg
+        width={16}
+        height={18}
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 18"
+        {...props}
+    >
+        <Path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M3.83895 1.83548C6.46379 0.55484 9.53623 0.55484 12.1611 1.83548C13.8454 2.65725 14.9869 4.28557 15.179 6.14527L15.209 6.43597C15.3101 7.41452 15.3185 8.40035 15.2341 9.38046L15.2059 9.70796C15.1598 10.2446 15.1331 10.5541 15.0813 10.85C14.7997 12.4566 13.954 13.9108 12.6957 14.9537C12.4639 15.1458 12.2077 15.323 11.763 15.6305L11.5345 15.7885C10.9425 16.1979 10.5846 16.4454 10.2188 16.6208C8.81665 17.2931 7.18337 17.2931 5.78127 16.6208C5.41543 16.4454 5.05753 16.1979 4.46559 15.7885L4.26459 15.6495L4.2369 15.6304C3.7923 15.3229 3.53605 15.1458 3.30435 14.9537C2.04602 13.9108 1.20027 12.4566 0.918748 10.85C0.866904 10.5541 0.840265 10.2446 0.794083 9.70796L0.765893 9.38046C0.681526 8.40035 0.689937 7.41452 0.791015 6.43598L0.821044 6.14527C1.01314 4.28557 2.15462 2.65725 3.83895 1.83548ZM11.613 2.9589C9.33404 1.84703 6.66598 1.84703 4.38705 2.9589C3.08887 3.59228 2.21195 4.84559 2.06443 6.27371L2.0344 6.56441C1.94141 7.46465 1.93367 8.37158 2.01129 9.27326L2.03659 9.56718C2.08647 10.1467 2.10874 10.3989 2.14999 10.6342C2.3801 11.9474 3.07159 13.1373 4.10201 13.9913C4.28673 14.1444 4.49567 14.2896 4.97554 14.6214L5.12599 14.7254C5.78384 15.1803 6.05625 15.3664 6.32167 15.4937C7.38213 16.0021 8.61789 16.0021 9.67835 15.4937C9.94377 15.3664 10.2162 15.1803 10.874 14.7254L11.0245 14.6214C11.5044 14.2896 11.7133 14.1444 11.898 13.9913C12.9284 13.1373 13.6199 11.9474 13.85 10.6342C13.8913 10.3989 13.9136 10.1467 13.9634 9.56718L13.9887 9.27326C14.0663 8.37158 14.0586 7.46465 13.9656 6.56441L13.9356 6.27371C13.7881 4.84559 12.9112 3.59228 11.613 2.9589ZM10.7181 6.87642C10.9705 7.11195 10.9841 7.50744 10.7486 7.75978L7.83192 10.8848C7.71627 11.0087 7.55525 11.0803 7.38578 11.0832C7.21631 11.0862 7.05292 11.0201 6.93307 10.9003L5.2664 9.23361C5.02232 8.98953 5.02232 8.5938 5.2664 8.34973C5.51048 8.10565 5.90621 8.10565 6.15029 8.34973L7.35951 9.55895L9.83477 6.90689C10.0703 6.65454 10.4658 6.6409 10.7181 6.87642Z"
+            fill="#20C54D"
         />
     </Svg>
 )

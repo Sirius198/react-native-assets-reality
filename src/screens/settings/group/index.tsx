@@ -8,6 +8,7 @@ import SearchBox from "../../../components/common/input/SearchBox";
 import MenuPlusButton from "../../../components/common/buttons/MenuPlusButton";
 import CreateGroupModal from "../../../components/settings/group/modal/CreateGroupModal";
 import FormInput from "../../../components/common/form/FormInput";
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 
 const SettingsGroup = ({ navigation }) => {
 
@@ -19,7 +20,7 @@ const SettingsGroup = ({ navigation }) => {
             headerTitle: () => (
                 <View>
                     <Typography>Manage group</Typography>
-                    <Typography weight="Bold" size={16}>Group Management</Typography>
+                    <Typography weight="Bold" size={18}>Group Management</Typography>
                 </View>
             ),
             headerRight: () => (
@@ -35,7 +36,7 @@ const SettingsGroup = ({ navigation }) => {
     };
 
     return (
-        <Wrapper style={{ backgroundColor: colors.background }}>
+        <MainContentWrapper style={{ backgroundColor: colors.background }}>
 
             <SearchBox />
 
@@ -54,12 +55,8 @@ const SettingsGroup = ({ navigation }) => {
                 show={createModalShow}
                 onClose={() => setCreateModalShow(false)}
             />
-        </Wrapper>
+        </MainContentWrapper>
     )
 };
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 export default SettingsGroup

@@ -8,6 +8,7 @@ import { NotificationSettingsData } from "./constant";
 import { useTheme } from "@react-navigation/native";
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 
 const SettingsEmail = ({ navigation }) => {
 
@@ -25,7 +26,7 @@ const SettingsEmail = ({ navigation }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
 
             <Typography
                 size={20}
@@ -67,13 +68,9 @@ const SettingsEmail = ({ navigation }) => {
                 </NotfSettingWrapper>
             ))}
 
-        </Wrapper>
+        </MainContentWrapper>
     )
 }
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 const NotfSettingWrapper = styled.View`
     padding: 15px 12px;

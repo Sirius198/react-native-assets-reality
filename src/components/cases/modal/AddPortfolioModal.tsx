@@ -9,10 +9,11 @@ import { Input } from "../../common/input/styles";
 import BaseModal, { ModalActions } from "../../common/modal";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import ModalHeader from "../../common/modal/ModalHeader";
+import ModalTitle from "../../common/modal/ModalTitle";
 import { SecondaryButton, PrimaryButton } from "../../common/styles";
+import MySVG from "../../common/svg";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
-import { AddPortfolioButtonWrapper } from "./AddCaseModal"
 
 const AddPortfolioModal = ({ show, onClose }) => {
 
@@ -25,12 +26,12 @@ const AddPortfolioModal = ({ show, onClose }) => {
     return (
         <BaseModal show={visible}>
             <ModalHeader onClose={onClose}>
-                <Typography size={18}>Add Portfolio</Typography>
+                <ModalTitle title="Add Portfolio" />
             </ModalHeader>
 
             <Wrapper>
                 <FormLabel>Portfolio name</FormLabel>
-                <FormInput placeholder="Portfolio name"/>
+                <FormInput placeholder="Portfolio name" />
                 {/* <Typography style={{ marginTop: 10, marginBottom: 10 }}>Case Name</Typography> */}
                 {/* <Input placeholder="Case name" /> */}
 
@@ -41,12 +42,13 @@ const AddPortfolioModal = ({ show, onClose }) => {
                             <Typography variant="secondary" size={12}>Case name</Typography>
                             <Typography variant="primary" size={12}>Suspect name #{index + 1}</Typography>
                         </View>
+                        <MySVG.BadgeTick />
                     </PortfolioWrapper>
                 ))}
 
                 <Typography>Portfolio</Typography>
                 <AddPortfolioButtonWrapper>
-                    <Typography style={{ textAlign: 'center' }}>+ Add Portfolio</Typography>
+                    <Typography align="center" weight="Medium" size={12} style={{ color: '#3E7EFF' }}>+ Add Portfolio</Typography>
                 </AddPortfolioButtonWrapper>
             </Wrapper>
 
@@ -78,7 +80,17 @@ const PortfolioWrapper = styled.View`
     border-radius: 10px;
     flex-direction: row;
     margin-bottom: 15px;
-    align-items: space-between;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+const AddPortfolioButtonWrapper = styled.TouchableOpacity`
+    background-color: rgba(45, 116, 255, 0.02);
+    border: 1px dashed rgba(62, 126, 255, 0.5);
+    padding: 14px;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 10px 0;
 `;
 
 export default AddPortfolioModal;

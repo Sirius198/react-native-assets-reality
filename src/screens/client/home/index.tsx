@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 import SearchBox from "../../../components/common/input/SearchBox";
 import ClientCard from "../../../components/client/ClientCard";
 import CreateClientModal from "../../../components/client/modal/CreateClientModal";
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 
 export default function ClientHome({ navigation }) {
 
@@ -32,7 +33,7 @@ export default function ClientHome({ navigation }) {
     }
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             <SearchBox style={{ marginBottom: 16 }} />
 
             {[1, 2, 3, 4, 5].map((_, index) => (
@@ -46,10 +47,6 @@ export default function ClientHome({ navigation }) {
                 show={showCreateModal}
                 onClose={() => setShowCreateModal(false)}
             />
-        </Wrapper>
+        </MainContentWrapper>
     )
 }
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;

@@ -18,8 +18,7 @@ const AssetItem = ({ onQuickAction }) => {
                     height="100"
                     uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg"
                 /> */}
-                {/* <SVGImg width={30} height={30} /> */}
-                <IconBox name="bitcoin" width={30} height={30} />
+                <MySVG.Bitcoin width={30} height={30} />
                 <View style={{ marginLeft: 10 }}>
                     <Typography weight="Bold">BTC</Typography>
                     <Typography variant="secondary" size={12}>Bitcoin</Typography>

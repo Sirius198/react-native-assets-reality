@@ -7,6 +7,7 @@ import OutlineButton from "../../../components/common/buttons/OutlineButton";
 import { useTheme } from "@react-navigation/native";
 import GroupMemberItem from "../../../components/settings/group/GroupMemberItem";
 import SearchBox from "../../../components/common/input/SearchBox";
+import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 
 const SettingsGroupDetail = ({ navigation, route }) => {
 
@@ -25,7 +26,7 @@ const SettingsGroupDetail = ({ navigation, route }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             <SearchBox />
 
             <View style={{ flexDirection: 'row', marginBottom: 24, marginTop: 16 }}>
@@ -36,12 +37,8 @@ const SettingsGroupDetail = ({ navigation, route }) => {
             {[1, 2, 3, 4, 1].map((_, index) => (
                 <GroupMemberItem key={index} />
             ))}
-        </Wrapper>
+        </MainContentWrapper>
     )
 };
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 export default SettingsGroupDetail

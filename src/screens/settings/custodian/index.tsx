@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native'
 import Label from '../../../components/common/base/Label';
+import MainContentWrapper from '../../../components/common/base/MainContentWrapper';
 import Typography from '../../../components/common/typography/Typography';
 import CustodianCard from '../../../components/settings/custodian/CustodianCard';
 
@@ -19,19 +20,15 @@ const SettingsCustodian = ({ navigation }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
 
             <Typography variant='secondary' size={16} style={{ marginBottom: 17 }}>
                 Enable more custodians for your organization
             </Typography>
 
             <CustodianCard />
-        </Wrapper>
+        </MainContentWrapper>
     )
 }
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 export default SettingsCustodian

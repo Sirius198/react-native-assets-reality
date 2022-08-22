@@ -18,7 +18,3 @@ export const OutlineButton = styled.TouchableOpacity`
     border-radius: 10px;
     border: 1px solid #3e7eff;
 `;
-
-export const MainContentWrapper = styled.ScrollView`
-    flex: 1;
-`;

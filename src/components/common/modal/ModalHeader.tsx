@@ -1,6 +1,8 @@
 import { View, TouchableOpacity, Modal } from "react-native"
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import MySVG from "../svg";
+import HeaderButton from "../buttons/HeaderButton";
 
 const ModalHeader = ({ showBackButton = true, showCloseButton = true, onClose, children, ...rest }) => {
     return (
@@ -9,14 +11,15 @@ const ModalHeader = ({ showBackButton = true, showCloseButton = true, onClose, c
             <Div>
                 {showBackButton &&
                     <ModalButton marginRight={10} onPress={onClose}>
-                        <Icon name="angle-left" size={20} color="#363853" />
+                        <MySVG.AngleLeft style={{ color: '#363853' }} />
                     </ModalButton>
                 }
                 {children}
             </Div>
-            {showCloseButton && <ModalButton onPress={onClose}>
-                <Icon name="times" size={20} color="#363853" />
-            </ModalButton>}
+            {/* {showCloseButton && <ModalButton onPress={onClose}>
+                <MySVG.XIcon style={{ color: '#363853' }} />
+            </ModalButton>} */}
+            {showCloseButton && <HeaderButton type="close" onPress={onClose} />}
         </Wrapper>
     )
 }

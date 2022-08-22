@@ -12,11 +12,23 @@ import { StyleSheet } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+const DummyCustodians = [
+    {
+        icon: '',
+        name: 'DIGIVAULT'
+    },
+    {
+        icon: '',
+        name: 'FIDELITY'
+    },
+];
+
 export default function AddAssetModal({ show, onClose }) {
 
     const [assetType, setAssetType] = useState(0);
     const [addressType, setAddressType] = useState(0);
     const [walletType, setWalletType] = useState(0);
+    const [custodian, setCustodian] = useState(0);
     const { dark } = useTheme();
     const dref = useRef()
 
@@ -98,6 +110,9 @@ export default function AddAssetModal({ show, onClose }) {
                 <Typography weight="Medium" style={{ marginTop: 24 }}>Select Custodian</Typography>
                 <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Custodian you want to store the asset with</Typography>
 
+                {/* <MyDD options={DummyCustodians}>
+                    <Typography style={{ padding: 10 }}>Yes</Typography>
+                </MyDD> */}
                 {/* <MyDD
                     dark={dark}
                     options={['option 1', 'option 2']}
@@ -128,7 +143,7 @@ const ScrollViewWrapper = styled.ScrollView`
 `;
 
 // const MyDD = styled(ModalDropdown)`
-//     padding: 11px 20px;
+//     // padding: 11px 20px;
 //     border: 1px solid;
 //     border-color: ${props => props.dark ? '#353946' : '#E7E8EF'};
 //     background-color: ${props => props.dark ? 'rgba(53, 57, 70, 0.25)' : 'rgba(45, 116, 255, 0.02)'};

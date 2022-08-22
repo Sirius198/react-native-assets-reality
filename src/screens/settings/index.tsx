@@ -9,6 +9,7 @@ import SettingsGroup from "./group";
 import SettingsGroupDetail from "./group/detail";
 import SettingsInvoice from "./invoice";
 import SettingsCustodian from "./custodian";
+import HeaderButton from "../../components/common/buttons/HeaderButton";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,12 +18,14 @@ const SettingsScreen = () => {
 
     return (
         <NavigationContainer independent={true} theme={theme}>
-            <Stack.Navigator screenOptions={{
-                headerStyle: {
-                    backgroundColor: theme.colors.background,
-                },
-                headerShadowVisible: false
-            }}>
+            <Stack.Navigator
+                screenOptions={({ navigation }) => ({
+                    headerStyle: {
+                        backgroundColor: theme.colors.background,
+                    },
+                    headerShadowVisible: false,
+                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 24 }} /> : '')
+                })}>
                 <Stack.Screen name="Home" component={SettingsHome} />
                 <Stack.Screen name="Org" component={SettingsOrganization} />
                 <Stack.Screen name="User" component={SettingsUser} />

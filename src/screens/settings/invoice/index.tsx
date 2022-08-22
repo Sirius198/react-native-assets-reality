@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native'
+import MainContentWrapper from '../../../components/common/base/MainContentWrapper';
 import Typography from '../../../components/common/typography/Typography';
 import InvoiceCard from '../../../components/settings/invoice/InvoiceCard';
 
@@ -18,7 +19,7 @@ const SettingsInvoice = ({ navigation }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             {[1, 2,].map((_, index) => (
                 <InvoiceCard
                     key={index}
@@ -26,12 +27,8 @@ const SettingsInvoice = ({ navigation }) => {
                     onRemove={() => { }}
                 />
             ))}
-        </Wrapper>
+        </MainContentWrapper>
     )
 };
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-`;
 
 export default SettingsInvoice

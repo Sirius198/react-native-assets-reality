@@ -1,5 +1,7 @@
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HeaderButton from '../../components/common/buttons/HeaderButton';
+import Typography from '../../components/common/typography/Typography';
 import ActivityPage from './activities';
 import TotalAssetsPage from './assets';
 import CaseHome from './home';
@@ -13,17 +15,19 @@ export default function CaseScreen() {
 
     return (
         <NavigationContainer independent={true} theme={theme}>
-            <Stack.Navigator screenOptions={{
-                headerStyle: {
-                    backgroundColor: theme.colors.background,
-                },
-                headerShadowVisible: false
-            }}>
+            <Stack.Navigator
+                screenOptions={({ navigation }) => ({
+                    headerStyle: {
+                        backgroundColor: theme.colors.background,
+                    },
+                    headerShadowVisible: false,
+                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 24 }} /> : '')
+                })}>
                 <Stack.Screen name="Home" component={CaseHome} />
                 <Stack.Screen name="Inspect" component={CaseInspectPage} />
                 <Stack.Screen name="Assets" component={TotalAssetsPage} />
                 <Stack.Screen name="Activity" component={ActivityPage} />
             </Stack.Navigator>
-        </NavigationContainer>
+        </NavigationContainer >
     )
 }

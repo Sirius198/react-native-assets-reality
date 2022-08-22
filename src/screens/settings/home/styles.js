@@ -1,8 +1,7 @@
 import styled from 'styled-components/native'
 
-export const Wrapper = styled.View`
-    padding: 20px;
-    flex: 1;
+export const Wrapper = styled.ScrollView`
+    padding: 20px 20px 20px 20px;
 `;
 
 export const SettingCategoryButtonWrapper = styled.TouchableOpacity`

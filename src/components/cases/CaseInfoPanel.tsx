@@ -9,12 +9,13 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useTheme } from '@react-navigation/native';
 import Divider from '../common/divider';
 import Label from '../common/base/Label';
+import IconWrapper from '../common/base/IconWrapper';
+import MySVG from '../common/svg';
 
 const CaseInfoPanel = ({ onInspect }) => {
 
     const { dark, colors: themeColors } = useTheme();
     const [expanded, setExpanded] = useState(false);
-    const styles = lightStyles;
 
     return (
         <View style={{ marginBottom: 10 }}>
@@ -77,36 +78,46 @@ const CaseInfoPanel = ({ onInspect }) => {
 
             {expanded &&
                 <ExpandPanel style={{ backgroundColor: themeColors.card }}>
-                    <Typography variant='secondary' size={12} style={{ marginBottom: 5 }}>Recent Activity</Typography>
+                    <View style={commonStyles.expandPanel}>
+                        <Typography variant='secondary' size={12} style={{ marginBottom: 5 }}>Recent Activity</Typography>
 
-                    <View style={commonStyles.activityPanel}>
-                        <View style={commonStyles.gridItem}>
-                            <IconBox name="receive" color="blue" />
-                            <TextGroup>
-                                <Typography variant='primary' size={14}>Receive</Typography>
-                                <Typography variant='secondary' size={12}>9:40 AM</Typography>
-                            </TextGroup>
-                        </View>
-                        <View style={commonStyles.gridItem}>
-                            <IconBox name="from" color="pink" />
-                            <TextGroup>
-                                <Typography variant='primary' size={14}>From</Typography>
-                                <Typography variant='secondary' size={12}>9:40 AM</Typography>
-                            </TextGroup>
-                        </View>
-                        <View style={commonStyles.gridItem}>
-                            <IconBox name="amount" color="red" />
-                            <TextGroup>
-                                <Typography variant='primary' size={14}>Amount</Typography>
-                                <Typography variant='secondary' size={12}>9:40 AM</Typography>
-                            </TextGroup>
-                        </View>
-                        <View style={commonStyles.gridItem}>
-                            <IconBox name="gasfee" color="green" />
-                            <TextGroup>
-                                <Typography variant='primary' size={14}>Gas Fee</Typography>
-                                <Typography variant='secondary' size={12}>9:40 AM</Typography>
-                            </TextGroup>
+                        <View style={commonStyles.activityPanel}>
+                            <View style={commonStyles.gridItem}>
+                                <IconWrapper style={{ backgroundColor: 'rgba(62, 126, 255, 0.1)' }}>
+                                    <MySVG.Withdrawal style={{ color: '#3E7EFF' }} />
+                                </IconWrapper>
+                                <TextGroup>
+                                    <Typography variant='primary' weight='Medium' size={14}>Receive</Typography>
+                                    <Typography variant='secondary' size={12}>9:40 AM</Typography>
+                                </TextGroup>
+                            </View>
+                            <View style={commonStyles.gridItem}>
+                                <IconWrapper style={{ backgroundColor: 'rgba(138, 62, 255, 0.06)' }}>
+                                    <MySVG.From style={{ color: '#8A3EFF' }} />
+                                </IconWrapper>
+                                <TextGroup>
+                                    <Typography variant='primary' weight='Medium' size={14}>From</Typography>
+                                    <Typography variant='secondary' size={12}>9:40 AM</Typography>
+                                </TextGroup>
+                            </View>
+                            <View style={commonStyles.gridItem}>
+                                <IconWrapper style={{ backgroundColor: 'rgba(242, 147, 57, 0.1)' }}>
+                                    <MySVG.DollarCircle style={{ color: '#F29339' }} />
+                                </IconWrapper>
+                                <TextGroup>
+                                    <Typography variant='primary' weight='Medium' size={14}>Amount</Typography>
+                                    <Typography variant='secondary' size={12}>9:40 AM</Typography>
+                                </TextGroup>
+                            </View>
+                            <View style={commonStyles.gridItem}>
+                                <IconWrapper style={{ backgroundColor: 'rgba(95, 220, 179, 0.13)' }}>
+                                    <MySVG.Gas style={{ color: '#1BE3A2' }} />
+                                </IconWrapper>
+                                <TextGroup>
+                                    <Typography variant='primary' weight='Medium' size={14}>Gas Fee</Typography>
+                                    <Typography variant='secondary' size={12}>9:40 AM</Typography>
+                                </TextGroup>
+                            </View>
                         </View>
                     </View>
                 </ExpandPanel>
@@ -114,38 +125,6 @@ const CaseInfoPanel = ({ onInspect }) => {
         </View>
     )
 };
-
-const lightStyles = StyleSheet.create({
-    container: {
-        borderRadius: 10,
-        padding: 10,
-        backgroundColor: '#fff',
-        marginTop: 10,
-    },
-    li: {
-        flexDirection: 'row',
-        borderBottomColor: '#f8f8f8',
-        borderBottomWidth: 1,
-        paddingTop: 5,
-        paddingBottom: 5,
-        justifyContent: 'space-between'
-    },
-    caseStatus: {
-        borderRadius: 100,
-    },
-    expandedContainer: {
-        backgroundColor: '',
-        padding: 10,
-        marginRight: 10,
-        marginLeft: 10,
-        borderRadius: 5,
-        borderLeftColor: '#3e7eff',
-        borderLeftWidth: 1
-    }
-});
-
-const darkStyles = StyleSheet.create({
-});
 
 const commonStyles = StyleSheet.create({
     activityPanel: {
@@ -155,11 +134,18 @@ const commonStyles = StyleSheet.create({
     gridItem: {
         width: '48%',
         flexDirection: 'row',
-        marginBottom: 5
+        marginBottom: 5,
+        alignItems: 'center'
     },
     gridItemContent: {
         width: '48%'
     },
+    expandPanel: {
+        borderLeftWidth: 1,
+        borderLeftColor: '#3e7eff',
+        paddingLeft: 16,
+        paddingRight: 16,
+    }
 });
 
 const Wrapper = styled.View`
@@ -173,12 +159,10 @@ const TextGroup = styled.View`
 `;
 
 const ExpandPanel = styled.View`
-    padding: 10px;
-    marginRight: 10px;
-    marginLeft: 10px;
-    borderRadius: 5px;
-    borderLeftColor: '#3e7eff';
-    borderLeftWidth: 1px;
+    padding: 10px 0;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
 `;
 
 const ExpandButton = styled.TouchableOpacity`

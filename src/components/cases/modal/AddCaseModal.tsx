@@ -9,6 +9,7 @@ import { Input } from "../../common/input/styles";
 import BaseModal, { ModalActions } from "../../common/modal";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import ModalHeader from "../../common/modal/ModalHeader";
+import ModalTitle from "../../common/modal/ModalTitle";
 import { SecondaryButton, PrimaryButton } from "../../common/styles";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
@@ -25,7 +26,7 @@ const AddCaseModal = ({ show, onClose, onOk }) => {
     return (
         <BaseModal show={visible}>
             <ModalHeader showBackButton={false} onClose={onClose}>
-                <Typography size={18}>Add Cases</Typography>
+                <ModalTitle title="Add Case" />
             </ModalHeader>
 
             <Wrapper>
@@ -54,15 +55,6 @@ const AddCaseModal = ({ show, onClose, onOk }) => {
 };
 
 const Wrapper = styled.View`
-`;
-
-export const AddPortfolioButtonWrapper = styled.TouchableOpacity`
-    background-color: rgba(45, 116, 255, 0.02);
-    border: 1px dashed rgba(62, 126, 255, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    justify-content: center;
-    margin: 10px 0;
 `;
 
 export default AddCaseModal;

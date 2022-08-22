@@ -9,7 +9,7 @@ const PortfolioStat = () => {
     const { dark, colors } = useTheme();
     return (
         <Wrapper style={{ backgroundColor: colors.card }}>
-            <Typography variant="primary" size={16} style={{ marginBottom: 20 }}>Portfolio Statistics</Typography>
+            <Typography variant="primary" weight="Medium" size={16} style={{ marginBottom: 20 }}>Portfolio Statistics</Typography>
 
             <StatRow dark={dark}>
                 <Typography variant="secondary">All Time High</Typography>

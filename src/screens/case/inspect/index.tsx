@@ -5,6 +5,7 @@ import AssetValueChart from '../../../components/cases/detail/AssetValueChart';
 import PortfolioButtons from '../../../components/cases/detail/PortfolioButtons';
 import PortfolioStat from '../../../components/cases/detail/PortfolioStat';
 import AddPortfolioModal from '../../../components/cases/modal/AddPortfolioModal';
+import MainContentWrapper from '../../../components/common/base/MainContentWrapper';
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import Typography from '../../../components/common/typography/Typography';
@@ -31,7 +32,7 @@ const CaseInspectPage = ({ navigation }) => {
     }, []);
 
     return (
-        <Wrapper>
+        <MainContentWrapper>
             <PortfolioButtons activeId={activePortfolio} onChange={i => setActivePortfolio(i)} />
 
             {/* Total Assets and Recent Activity Buttons */}
@@ -89,13 +90,8 @@ const CaseInspectPage = ({ navigation }) => {
              />
 
             <View style={{ marginBottom: 40 }} />
-        </Wrapper>
+        </MainContentWrapper>
     )
 };
-
-const Wrapper = styled.ScrollView`
-    padding: 20px;
-    padding-bottom: 40px;
-`;
 
 export default CaseInspectPage
