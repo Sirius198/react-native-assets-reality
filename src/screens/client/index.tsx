@@ -1,6 +1,7 @@
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HeaderButton from '../../components/common/buttons/HeaderButton';
+import MyNavHeader from '../../components/common/navheader';
 import ClientDetailPage from './detail';
 import ClientHome from './home';
 
@@ -16,9 +17,10 @@ export default function ClientScreen() {
                     headerStyle: {
                         backgroundColor: theme.colors.background,
                     },
+                    header: props => <MyNavHeader {...props} />,
                     headerShadowVisible: false,
                     headerBackVisible: false,
-                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 20 }} /> : <></>)
+                    headerLeft: props => <HeaderButton onPress={() => navigation.goBack()} style={{ marginRight: 10 }} />
                 })}>
                 <Stack.Screen name="Home" component={ClientHome} />
                 <Stack.Screen name="Detail" component={ClientDetailPage} />

@@ -13,6 +13,7 @@ import OutlineButton from "../../../components/common/buttons/OutlineButton";
 import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
 import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 import { WalletSvg } from "../../../components/common/svg/TestSvg";
+import HeaderButton from "../../../components/common/buttons/HeaderButton";
 
 export default function CaseHome({ navigation }) {
 

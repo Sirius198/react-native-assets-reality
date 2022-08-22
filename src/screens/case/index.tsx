@@ -2,6 +2,7 @@ import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View } from 'react-native';
 import HeaderButton from '../../components/common/buttons/HeaderButton';
+import MyNavHeader from '../../components/common/navheader';
 import Typography from '../../components/common/typography/Typography';
 import ActivityPage from './activities';
 import TotalAssetsPage from './assets';
@@ -9,6 +10,18 @@ import CaseHome from './home';
 import CaseInspectPage from './inspect';
 
 const Stack = createNativeStackNavigator();
+
+const MyHeader = props => {
+    return (
+        <View
+            {...props}
+            style={{ paddingTop: 90, flexDirection: 'row', justifyContent: 'space-between' }}
+        >
+            {props.options.headerTitle()}
+            {props.options.headerRight()}
+        </View>
+    )
+}
 
 export default function CaseScreen() {
 
@@ -20,11 +33,11 @@ export default function CaseScreen() {
                 screenOptions={({ navigation }) => ({
                     headerStyle: {
                         backgroundColor: theme.colors.background,
-                        marginTop: 100
                     },
-                    headerShadowVisible: false,
-                    headerBackVisible: false,
-                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 20 }} /> : <></>)
+                    header: props => <MyNavHeader {...props} />,
+                    // headerShadowVisible: false,
+                    // headerBackVisible: true,
+                    headerLeft: props => <HeaderButton onPress={() => navigation.goBack()} style={{ marginRight: 10 }} />
                 })}>
                 <Stack.Screen name="Home" component={CaseHome} />
                 <Stack.Screen name="Inspect" component={CaseInspectPage} />

@@ -26,8 +26,11 @@ const SettingsOrganization = ({ navigation }) => {
             headerRight: () => (
                 <MenuPlusButton name="pen" onPress={() => setModalVisible(true)} />
             ),
+            headerStyle: {
+                backgroundColor: colors.card
+            }
         })
-    }, []);
+    }, [dark]);
 
     return (
         <>

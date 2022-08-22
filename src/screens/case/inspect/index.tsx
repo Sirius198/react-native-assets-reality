@@ -6,6 +6,7 @@ import PortfolioButtons from '../../../components/cases/detail/PortfolioButtons'
 import PortfolioStat from '../../../components/cases/detail/PortfolioStat';
 import AddPortfolioModal from '../../../components/cases/modal/AddPortfolioModal';
 import MainContentWrapper from '../../../components/common/base/MainContentWrapper';
+import HeaderButton from '../../../components/common/buttons/HeaderButton';
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import Typography from '../../../components/common/typography/Typography';

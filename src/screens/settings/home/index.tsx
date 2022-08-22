@@ -16,9 +16,9 @@ const SettingsHome = ({ navigation }) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle: () => <Typography weight="Bold" size={18}>Settings</Typography>,
+            headerTitle: () => <View><Typography weight="Bold" size={18}>Settings</Typography></View>,
             headerStyle: {
-                backgroundColor: dark ? '#1F2128' : '#FFF'
+                backgroundColor: dark ? '#1F2128' : '#FFF',
             }
         });
     }, [dark]);

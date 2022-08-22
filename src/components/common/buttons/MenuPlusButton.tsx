@@ -16,6 +16,5 @@ const Wrapper = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     background-color: #3E7EFF;
-    margin-right: 10px;
 `;
 export default MenuPlusButton
