@@ -16,9 +16,12 @@ const SearchBox = ({ ...rest }) => {
             <MySVG.Search style={{ color: dark ? '#8A8B9D' : '#130F26' }} />
             <VDivider />
 
-            <TextInput style={{
-                flex: 1,
-            }} />
+            <TextInput
+                style={{
+                    flex: 1,
+                }}
+                placeholder="Search"
+            />
         </Wrapper>
     )
 }

@@ -17,7 +17,8 @@ export default function ClientScreen() {
                         backgroundColor: theme.colors.background,
                     },
                     headerShadowVisible: false,
-                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 24 }} /> : '')
+                    headerBackVisible: false,
+                    headerLeft: props => (props.canGoBack ? <HeaderButton onPress={() => navigation.goBack()} style={{ marginLeft: 20 }} /> : <></>)
                 })}>
                 <Stack.Screen name="Home" component={ClientHome} />
                 <Stack.Screen name="Detail" component={ClientDetailPage} />

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 // import ModalDropdown from 'react-native-modal-dropdown';
+import DropDownPicker from 'react-native-dropdown-picker';
 import RadioCard from "../../common/base/RadioCard";
 import BaseModal from "../../common/modal";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
@@ -8,9 +9,10 @@ import ModalTitle from "../../common/modal/ModalTitle";
 import MySVG from "../../common/svg";
 import Typography from "../../common/typography/Typography";
 import styled from 'styled-components/native';
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Dropdown from "../../common/dropdown";
 
 const DummyCustodians = [
     {
@@ -30,7 +32,14 @@ export default function AddAssetModal({ show, onClose }) {
     const [walletType, setWalletType] = useState(0);
     const [custodian, setCustodian] = useState(0);
     const { dark } = useTheme();
-    const dref = useRef()
+
+
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        { label: 'Apple', value: 'apple' },
+        { label: 'Banana', value: 'banana' }
+    ]);
 
     useEffect(() => {
         setAssetType(0);
@@ -44,7 +53,27 @@ export default function AddAssetModal({ show, onClose }) {
                 <ModalTitle title="Add Asset" />
             </ModalHeader>
 
+            {/* <DropDownPicker
+                    open={open}
+                    value={value}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItems}
+                /> */}
+
             <ScrollViewWrapper showsVerticalScrollIndicator={false}>
+
+                <View>
+                <DropDownPicker
+                    open={open}
+                    value={value}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItems}
+                />
+                </View>
 
                 {/* Asset Type */}
                 <Typography weight="Medium">Select Asset Type</Typography>
@@ -54,7 +83,7 @@ export default function AddAssetModal({ show, onClose }) {
                     active={assetType === 1}
                     title="Cryptocurrency"
                     subtitle="Generate a warm or cold wallet wlth out partner custodians"
-                    icon={<MySVG.Location style={{ color: assetType === 1 ? '#FFF' : '#3E7EFF' }} />}
+                    icon={<MySVG.Wallet style={{ color: assetType === 1 ? '#FFF' : '#3E7EFF' }} />}
                     onPress={() => setAssetType(1)}
                 />
 
@@ -62,72 +91,71 @@ export default function AddAssetModal({ show, onClose }) {
                     active={assetType === 2}
                     title="Other"
                     subtitle="Add other forms of non - digital assets"
-                    icon={<MySVG.Location style={{ color: assetType === 2 ? '#FFF' : '#3E7EFF' }} />}
+                    icon={<MySVG.Invoice style={{ color: assetType === 2 ? '#FFF' : '#3E7EFF' }} />}
                 // onPress={() => setAssetType(2)}
                 />
 
                 {/* Address Type */}
-                <Typography weight="Medium" style={{ marginTop: 16 }}>Select Address Type</Typography>
-                <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Address you want to configure</Typography>
+                {assetType != 0 &&
+                    <>
+                        <Typography weight="Medium" style={{ marginTop: 16 }}>Select Address Type</Typography>
+                        <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Address you want to configure</Typography>
 
-                <RadioCard
-                    active={addressType === 1}
-                    title="Generate"
-                    subtitle="Generate a warm wallet instantly. Fast and easy to use"
-                    icon={<MySVG.Location style={{ color: addressType === 1 ? '#FFF' : '#3E7EFF' }} />}
-                    onPress={() => setAddressType(1)}
-                />
+                        <RadioCard
+                            active={addressType === 1}
+                            title="Generate"
+                            subtitle="Generate a warm wallet instantly. Fast and easy to use"
+                            icon={<MySVG.Location style={{ color: addressType === 1 ? '#FFF' : '#3E7EFF' }} />}
+                            onPress={() => setAddressType(1)}
+                        />
 
-                <RadioCard
-                    active={addressType === 2}
-                    title="Add Existing Address"
-                    subtitle="Add an existing address that holds the tokens you are trying to track"
-                    icon={<MySVG.Location style={{ color: addressType === 2 ? '#FFF' : '#3E7EFF' }} />}
-                // onPress={() => setAddressType(2)}
-                />
+                        <RadioCard
+                            active={addressType === 2}
+                            title="Add Existing Address"
+                            subtitle="Add an existing address that holds the tokens you are trying to track"
+                            icon={<MySVG.Location style={{ color: addressType === 2 ? '#FFF' : '#3E7EFF' }} />}
+                        // onPress={() => setAddressType(2)}
+                        />
+                    </>}
 
                 {/* Wallet Type */}
-                <Typography weight="Medium" style={{ marginTop: 16 }}>Select Address Type</Typography>
-                <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Address you want to configure</Typography>
+                {addressType != 0 &&
+                    <>
+                        <Typography weight="Medium" style={{ marginTop: 16 }}>Select Address Type</Typography>
+                        <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Address you want to configure</Typography>
 
-                <RadioCard
-                    active={walletType === 1}
-                    title="Generate"
-                    subtitle="Generate a warm wallet instantly. Fast and easy to use"
-                    icon={<MySVG.Location style={{ color: walletType === 1 ? '#FFF' : '#3E7EFF' }} />}
-                    onPress={() => setWalletType(1)}
-                />
+                        <RadioCard
+                            active={walletType === 1}
+                            title="Generate"
+                            subtitle="Generate a warm wallet instantly. Fast and easy to use"
+                            icon={<MySVG.Location style={{ color: walletType === 1 ? '#FFF' : '#3E7EFF' }} />}
+                            onPress={() => setWalletType(1)}
+                        />
 
-                <RadioCard
-                    active={walletType === 2}
-                    title="Add Existing Address"
-                    subtitle="Add an existing address that holds the tokens you are trying to track"
-                    icon={<MySVG.Location style={{ color: walletType === 2 ? '#FFF' : '#3E7EFF' }} />}
-                // onPress={() => setWalletType(2)}
-                />
-
-                {/* Custodian */}
-                <Typography weight="Medium" style={{ marginTop: 24 }}>Select Custodian</Typography>
-                <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Custodian you want to store the asset with</Typography>
-
-                {/* <MyDD options={DummyCustodians}>
-                    <Typography style={{ padding: 10 }}>Yes</Typography>
-                </MyDD> */}
-                {/* <MyDD
-                    dark={dark}
-                    options={['option 1', 'option 2']}
-                    renderButtonComponent={(props) => {
-                        return (
-                            <TouchableOpacity>
-                                {props.children}
-                            </TouchableOpacity>
-                        )
-                    }}
-                /> */}
+                        <RadioCard
+                            active={walletType === 2}
+                            title="Add Existing Address"
+                            subtitle="Add an existing address that holds the tokens you are trying to track"
+                            icon={<MySVG.Location style={{ color: walletType === 2 ? '#FFF' : '#3E7EFF' }} />}
+                        // onPress={() => setWalletType(2)}
+                        />
+                    </>
+                }
 
                 {/* Custodian */}
-                <Typography weight="Medium" style={{ marginTop: 24 }}>Select Asset</Typography>
-                <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Asset you want to store</Typography>
+                {walletType != 0 && <>
+                    <Typography weight="Medium" style={{ marginTop: 24 }}>Select Custodian</Typography>
+                    <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Custodian you want to store the asset with</Typography>
+
+                    <Dropdown />
+
+                    {/* Custodian */}
+                    <Typography weight="Medium" style={{ marginTop: 24 }}>Select Asset</Typography>
+                    <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Asset you want to store</Typography>
+
+                    <Dropdown />
+                </>}
+
             </ScrollViewWrapper>
 
             <ModalDefaultActions
@@ -139,7 +167,7 @@ export default function AddAssetModal({ show, onClose }) {
 }
 
 const ScrollViewWrapper = styled.ScrollView`
-    height: 60%;
+    max-height: 500px;
 `;
 
 // const MyDD = styled(ModalDropdown)`

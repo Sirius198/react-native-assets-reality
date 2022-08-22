@@ -17,23 +17,25 @@ export default function RadioCard({
 
     return (
         <Wrapper dark={dark} active={active} {...rest}>
-            <View style={{ maxWidth: icon ? '60%' : '100%' }}>
+            <View style={{ maxWidth: icon ? '80%' : '100%' }}>
                 {active ?
                     <>
                         <Typography weight="SemiBold" style={{ color: '#FFF', marginBottom: 5 }}>{title}</Typography>
-                        <Typography size={12} style={{ color: '#FFF' }}>{subtitle}</Typography>
+                        <Typography size={12} style={{ color: '#FFF', lineHeight: 20 }}>{subtitle}</Typography>
                     </>
                     :
                     <>
                         <Typography weight="SemiBold" style={{ marginBottom: 5 }}>{title}</Typography>
-                        <Typography size={12} variant="secondary">{subtitle}</Typography>
+                        <Typography size={12} variant="secondary" style={{ lineHeight: 20 }}>{subtitle}</Typography>
                     </>
                 }
             </View>
 
-            {icon && <IconWrapper type={2} radius={50} active={active}>
-                {icon}
-            </IconWrapper>}
+            {icon &&
+                <IconWrapper type={2} radius={50} active={active}>
+                    {icon}
+                </IconWrapper>
+            }
         </Wrapper>
     )
 }

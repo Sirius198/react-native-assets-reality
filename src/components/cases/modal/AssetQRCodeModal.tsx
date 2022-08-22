@@ -10,6 +10,7 @@ import RadioCard from "../../common/base/RadioCard";
 import IconWrapper from "../../common/base/IconWrapper";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import { useEffect, useState } from "react";
+import QRCodeScanSvg from "../../common/svg/extra/QRCodeScanSvg";
 
 export default function AssetQRCodeModal({ show, onClose, onOk }) {
 
@@ -19,28 +20,28 @@ export default function AssetQRCodeModal({ show, onClose, onOk }) {
                 <TitleBar>
                     <MySVG.Bitcoin width={40} height={40} />
                     <View style={{ marginLeft: 15 }}>
-                        <ModalTitle title="BTC" />
+                        <ModalTitle title="BTC" weight="Bold" />
                         <Typography variant="secondary">Bitcoin</Typography>
                     </View>
                 </TitleBar>
             </ModalHeader>
 
-            <Typography weight="Light" size={12} variant="secondary">Total</Typography>
+            <Typography weight="Light" size={12} variant="secondary" mb={8}>Total</Typography>
             <Typography weight="Medium">0.244</Typography>
 
             <Divider />
 
-            <Typography weight="Medium">QR Code</Typography>
+            <Typography weight="Medium" mb={8}>QR Code</Typography>
             <Typography weight="Light" size={12} variant="secondary">Please scan this QR Code to add BTC</Typography>
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <QRCodeWrapper>
-                    <Typography>QR Code</Typography>
+                    <QRCodeScanSvg />
                 </QRCodeWrapper>
             </View>
 
             <View style={{ padding: 10 }}>
-                <Typography variant="secondary">Send only Binance-Peg-BTC (BEP20) to this address. Sending any other coins may result in Permanent Loss.</Typography>
+                <Typography variant="secondary" align="center">Send only <Typography>Binance-Peg-BTC (BEP20)</Typography> to this address. Sending any other coins may result in <Typography>Permanent Loss.</Typography></Typography>
             </View>
             
             <ModalDefaultActions
