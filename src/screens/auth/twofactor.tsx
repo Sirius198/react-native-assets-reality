@@ -1,42 +1,32 @@
 import Typography from "../../components/common/typography/Typography";
 import styled from 'styled-components/native';
 import OneDigitInput from "../../components/common/input/OneDigitInput";
-import { useSelector } from "react-redux";
-import { Image, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { Image, TouchableOpacity, Pressable, Keyboard } from "react-native";
 import http from "../../utils/https-common";
 import headers from "../../redux/actions/headers";
+import { confirm2FA } from "../../redux/actions/authActions";
+import AuthCodeInput from "../../components/common/input/AuthCodeInput";
+import { useEffect, useState } from "react";
 
 const TwoFactorPage = () => {
 
     const QRvalue = useSelector((state: any) => state.auth.qrCode);
     const auth = useSelector((state: any) => state.auth);
-    console.log(auth)
+    const dispatch = useDispatch();
 
-    const sendd = () => {
-        http
-            .get(`user/${auth.token}/2fa`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "X-Requested-With": "XMLHttpRequest",
-                    "AR-Token": `${null}`,
-                    Authorization: `Bearer ${null}`,
-                }
-            }
-            )
-            .then((res) => {
-                const data = res.data.data;
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err, err.response.data, auth.token);
-            })
-    };
+    const [otpCode, setOTPCode] = useState("");
+    const [isPinReady, setIsPinReady] = useState(false);
+    const maximumCodeLength = 6;
+
+    useEffect(() => {
+        if (isPinReady) {
+            dispatch(confirm2FA({ code: otpCode, authToken: auth.token }));
+        }
+    }, [isPinReady]);
 
     return (
-        <Wrapper>
+        <Wrapper onPress={Keyboard.dismiss}>
             <Typography size={25} weight="Bold" align='center'>Two-Factor Authentication</Typography>
             <Typography align='center' variant='secondary' mb={50}>
                 Scan the QR code and enter the six digit password
@@ -44,23 +34,30 @@ const TwoFactorPage = () => {
 
             <Image source={{ uri: 'https://api.assetreality.org/api/v1/' + QRvalue }} />
 
-            <DigitsWrapper>
+            {/* <DigitsWrapper>
                 {[1, 2, 3, 4, 5, 6].map((_, index) => (
                     <OneDigitInput key={index}></OneDigitInput>
                 ))}
-            </DigitsWrapper>
+            </DigitsWrapper> */}
 
-            <TouchableOpacity onPress={sendd}>
+            <AuthCodeInput
+                code={otpCode}
+                setCode={setOTPCode}
+                maximumLength={maximumCodeLength}
+                setIsPinReady={setIsPinReady}
+            />
+
+            {/* <TouchableOpacity onPress={sendd}>
                 <Typography>Click</Typography>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </Wrapper>
     )
 };
 
-const Wrapper = styled.View`
+const Wrapper = styled.Pressable`
     flex: 1;
     justify-content: center;
-    background-color: #fff;
+    background-color: #FFF;
 `;
 
 const DigitsWrapper = styled.View`

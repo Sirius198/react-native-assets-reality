@@ -109,6 +109,7 @@ export const confirm2FA = (data: any) => (dispatch: any) => {
       }
     })
     .catch((err) => {
+      console.log(err.response.data)
       dispatch({
         type: GET_ERRORS,
         payload: "There is a problem with your code",
