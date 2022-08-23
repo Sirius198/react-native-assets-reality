@@ -1,3 +1,4 @@
+import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import MainScreen from "./screens";
 import AuthMain from "./screens/auth";

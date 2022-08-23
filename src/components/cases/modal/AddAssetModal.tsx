@@ -11,7 +11,6 @@ import Typography from "../../common/typography/Typography";
 import styled from 'styled-components/native';
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Dropdown from "../../common/dropdown";
 
 const DummyCustodians = [

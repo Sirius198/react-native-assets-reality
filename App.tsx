@@ -1,66 +1,35 @@
-import { StyleSheet, Text, View, TouchableOpacity, FlexAlignType, useColorScheme } from 'react-native';
-import { NavigationContainer, DefaultTheme, useTheme, DarkTheme } from '@react-navigation/native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import MainNavigation from './src/navigator';
-import { useFonts } from 'expo-font';
-import { ThemeContext } from './src/context-store/context';
-import React, { useState } from 'react';
-import { Provider, useSelector } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistor, store } from './src/redux/store';
-import AppContainer from './src';
-
-const MyDarkTheme = {
-	...DarkTheme,
-	colors: {
-		...DarkTheme.colors,
-		primary: 'white',
-		card: '#242731',
-		border: 'rgb(45, 48, 60)',
-		background: 'rgb(31, 33, 40)',
-	},
-};
-
-const MyLightTheme = {
-	...DefaultTheme,
-	colors: {
-		...DefaultTheme.colors,
-		background: 'rgb(248, 248, 248)',
-	}
-};
+// import { useFonts } from 'expo-font';
+// import { Provider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/integration/react';
+// import { persistor, store } from './src/redux/store';
+// import AppContainer from './src';
+// import Typography from './src/components/common/typography/Typography';
+import { View, Text } from 'react-native';
 
 export default function App() {
-	// const darkMode = true;
-	const [theme, setTheme] = useState('light');
 
 	// Load PublicSans Font Family
-	const [loaded] = useFonts({
-		FF_Light: require('./src/assets/fonts/PublicSans-Light.ttf'),
-		FF_Regular: require('./src/assets/fonts/PublicSans-Regular.ttf'),
-		FF_SemiBold: require('./src/assets/fonts/PublicSans-SemiBold.ttf'),
-		FF_Medium: require('./src/assets/fonts/PublicSans-Medium.ttf'),
-		FF_Bold: require('./src/assets/fonts/PublicSans-Bold.ttf'),
-	});
+	// const [loaded] = useFonts({
+	// 	FF_Light: require('./src/assets/fonts/PublicSans-Light.ttf'),
+	// 	FF_Regular: require('./src/assets/fonts/PublicSans-Regular.ttf'),
+	// 	FF_SemiBold: require('./src/assets/fonts/PublicSans-SemiBold.ttf'),
+	// 	FF_Medium: require('./src/assets/fonts/PublicSans-Medium.ttf'),
+	// 	FF_Bold: require('./src/assets/fonts/PublicSans-Bold.ttf'),
+	// });
 
-	if (!loaded) {
-		return null;
-	}
+	// if (!loaded) {
+	// 	return null;
+	// }
 
-	return (
-		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor}>
-				<AppContainer />
-			</PersistGate>
-		</Provider>
-	)
+	return <View>
+		<Text>Yes</Text>
+	</View>
 
-	return (
-		<SafeAreaProvider>
-			<ThemeContext.Provider value={{ theme, setTheme }}>
-				<NavigationContainer theme={theme == 'dark' ? MyDarkTheme : MyLightTheme}>
-					<MainNavigation />
-				</NavigationContainer>
-			</ThemeContext.Provider>
-		</SafeAreaProvider>
-	)
+	// return (
+	// 	<Provider store={store}>
+	// 		<PersistGate loading={null} persistor={persistor}>
+	// 			<AppContainer />
+	// 		</PersistGate>
+	// 	</Provider>
+	// )
 }

@@ -1,6 +1,5 @@
 import { useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import CaseInfoPanel from "../../../components/cases/CaseInfoPanel";
 import WalletSelectModal from "../../../components/cases/modal/WalletSelectModal";
 import StatView from "../../../components/cases/StatView";
