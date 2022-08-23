@@ -28,7 +28,7 @@ const AuthCodeInput = ({
         };
     }, [code]);
 
-    const boxDigit = (_, index) => {
+    const boxDigit = (_, index: number) => {
         const emptyInput = "";
         const digit = code[index] || emptyInput;
 
@@ -92,6 +92,7 @@ const SplitBoxes = styled.View`
     border-radius: 5px;
     padding: 12px;
     min-width: 50px;
+    min-height: 55px;
 `;
 const SplitBoxesFocused = styled(SplitBoxes)`
     border-color: #f03521;
