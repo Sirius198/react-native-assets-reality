@@ -4,7 +4,11 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MainNavigation from './src/navigator';
 import { useFonts } from 'expo-font';
 import { ThemeContext } from './src/context-store/context';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Provider, useSelector } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './src/redux/store';
+import AppContainer from './src';
 
 const MyDarkTheme = {
 	...DarkTheme,
@@ -41,6 +45,14 @@ export default function App() {
 	if (!loaded) {
 		return null;
 	}
+
+	return (
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<AppContainer />
+			</PersistGate>
+		</Provider>
+	)
 
 	return (
 		<SafeAreaProvider>
