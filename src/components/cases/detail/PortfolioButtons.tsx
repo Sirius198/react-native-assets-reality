@@ -11,19 +11,20 @@ const PortfolioButtons = ({ activeId, onChange, portfolios }) => {
 
     return (
         <ScrollView horizontal style={{ marginTop: 0 }} showsHorizontalScrollIndicator={false}>
-            {portfolios.map((value, index) => (
+            {portfolios.map((port, index) => (
                 <PfButton
                     key={index}
                     active={index === activeIndex}
                     index={index}
                     onPress={(i: number) => { setActiveIndex(i); onChange(i); }}
+                    name={port.name}
                 />
             ))}
         </ScrollView>
     )
 };
 
-const PfButton = ({ active, index, onPress }) => {
+const PfButton = ({ active, index, onPress, name }) => {
     return (
         <PfButtonWrapper active={active} onPress={() => onPress(index)}>
             <Typography
@@ -31,7 +32,7 @@ const PfButton = ({ active, index, onPress }) => {
                 weight={active ? "SemiBold" : "Regular"}
                 variant={active ? "active" : "secondary"}
             >
-                Portfolio {index + 1}
+                {name}
             </Typography>
         </PfButtonWrapper>
     )

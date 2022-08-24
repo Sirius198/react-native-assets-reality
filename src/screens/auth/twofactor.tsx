@@ -2,7 +2,7 @@ import Typography from "../../components/common/typography/Typography";
 import styled from 'styled-components/native';
 import OneDigitInput from "../../components/common/input/OneDigitInput";
 import { useDispatch, useSelector } from "react-redux";
-import { Image, TouchableOpacity, Pressable, Keyboard } from "react-native";
+import { Image, TouchableOpacity, Pressable, Keyboard, View } from "react-native";
 import http from "../../utils/https-common";
 import headers from "../../redux/actions/headers";
 import { confirm2FA } from "../../redux/actions/authActions";
@@ -28,11 +28,19 @@ const TwoFactorPage = () => {
     return (
         <Wrapper onPress={Keyboard.dismiss}>
             <Typography size={25} weight="Bold" align='center'>Two-Factor Authentication</Typography>
-            <Typography align='center' variant='secondary' mb={50}>
+            <Typography align='center' variant='secondary' mb={20}>
                 Scan the QR code and enter the six digit password
             </Typography>
 
-            <Image source={{ uri: 'https://api.assetreality.org/api/v1/' + QRvalue }} />
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
+                <Image
+                    source={{ uri: 'https://api.assetreality.org/api/v1/' + QRvalue }}
+                    style={{
+                        width: 200,
+                        height: 200,
+                    }}
+                />
+            </View>
 
             {/* <DigitsWrapper>
                 {[1, 2, 3, 4, 5, 6].map((_, index) => (

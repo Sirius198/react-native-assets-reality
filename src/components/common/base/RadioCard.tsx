@@ -5,13 +5,21 @@ import MySVG from '../svg';
 import Typography from '../typography/Typography';
 import IconWrapper from './IconWrapper';
 
+interface IRadioCard {
+    active: boolean;
+    title: string;
+    subtitle: string;
+    icon: JSX.Element | undefined;
+    // onPress: () => void | undefined;
+}
+
 export default function RadioCard({
     active = false,
     title = "",
     subtitle = "",
-    icon = null,
+    icon = undefined,
     ...rest
-}) {
+}: IRadioCard) {
 
     const { dark } = useTheme();
 

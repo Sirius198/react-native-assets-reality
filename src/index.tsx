@@ -9,7 +9,7 @@ const AppContainer: React.FC<{}> = () => {
     // const dispatch = useDispatch();
     // dispatch({ type: "clear_all" });
 
-    return auth.isAuthenticated ? <MainScreen /> : <AuthMain />
+    return is2FAuthenticated ? <MainScreen /> : <AuthMain />
 };
 
 export default AppContainer;

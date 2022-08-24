@@ -45,8 +45,8 @@ const PortfolioStat = ({
             <StatRow odd dark={dark}>
                 <Typography variant="secondary">Latest Update</Typography>
                 <View>
-                    <Typography right>17:54</Typography>
-                    <Typography right>20/02/2022</Typography>
+                    <Typography align="right">17:54</Typography>
+                    <Typography align="right">20/02/2022</Typography>
                 </View>
             </StatRow>
 

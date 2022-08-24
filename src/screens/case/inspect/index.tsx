@@ -13,25 +13,24 @@ import { getPortfoliosByOperation } from '../../../redux/actions/portfolioAction
 
 const CaseInspectPage = ({ navigation, route }) => {
 
-    const { portfolio_id } = route.params;
+    const { operation_id } = route.params;
     const [activePortfolio, setActivePortfolio] = useState(0);
     const [addPortfolioModalShow, setAddPortfolioModalShow] = useState(false);
 
     const dispatch = useDispatch();
     const portfolios = useSelector((state: any) => state.operations.portfolios);
-    const op = useSelector((state: any) => state.operations.selectedOp);
-    console.log(portfolios);
+    const selectedOp = useSelector((state: any) => state.operations.selectedOp);
 
     useEffect(() => {
-        dispatch(getPortfoliosByOperation(portfolio_id));
-    }, [portfolio_id]);
+        dispatch(getPortfoliosByOperation(operation_id));
+    }, [operation_id]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: () => (
                 <View style={{ flexDirection: 'row' }}>
                     <Typography weight="Bold" size={18} style={{ color: '#8A8B9D' }}>Cases</Typography>
-                    <Typography weight="Bold" size={18}> / {op.operation_name}</Typography>
+                    <Typography weight="Bold" size={18}> / {selectedOp.operation_name}</Typography>
                 </View>
             ),
             headerRight: () => (
@@ -44,7 +43,7 @@ const CaseInspectPage = ({ navigation, route }) => {
 
     return (
         <MainContentWrapper>
-            <PortfolioButtons activeId={activePortfolio} portfolios={portfolios} onChange={i => setActivePortfolio(i)} />
+            <PortfolioButtons activeId={activePortfolio} portfolios={portfolios} onChange={(i: number) => setActivePortfolio(i)} />
 
             {/* Total Assets and Recent Activity Buttons */}
             <View style={{ flexDirection: 'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between' }}>
@@ -67,7 +66,7 @@ const CaseInspectPage = ({ navigation, route }) => {
                         variant='secondary'
                         size={12}
                     >
-                        Total asset value / Portfolio {activePortfolio + 1}
+                        Total asset value / {portfolios.length > 0 && portfolios[activePortfolio].name}
                     </Typography>
                     <Typography variant='primary' size={16} weight="Bold">
                         £36,581.70
@@ -93,9 +92,10 @@ const CaseInspectPage = ({ navigation, route }) => {
             <AssetValueChart />
 
             {/* Portfolio Statistics */}
-            <PortfolioStat assetCount={op.asset_count} />
+            <PortfolioStat assetCount={selectedOp.asset_count} />
 
             <AddPortfolioModal
+                op_id={selectedOp.operation_id}
                 show={addPortfolioModalShow}
                 onClose={() => setAddPortfolioModalShow(false)}
             />

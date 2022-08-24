@@ -13,8 +13,8 @@ import { Authenticate } from '../../redux/actions/authActions';
 
 const Signin = ({ navigation }) => {
 
-    const [email, setEmail] = useState('prodev0429@gmail.com');
-    const [password, setPassword] = useState('test');
+    const [email, setEmail] = useState('devprogrammer22@gmail.com');
+    const [password, setPassword] = useState('CnQFq2*UWKgaIB');
     const dispatch = useDispatch();
     const auth = useSelector((state: any) => state.auth);
 

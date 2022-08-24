@@ -33,8 +33,8 @@ const AssetItem = ({ onQuickAction }) => {
                     <Typography variant="secondary" size={12}>24% Change</Typography>
                 </View>
                 <View>
-                    <Typography variant="primary" size={16} weight="Bold" right>£52019.75</Typography>
-                    <Typography variant="secondary" size={12} right>USD Value</Typography>
+                    <Typography variant="primary" size={16} weight="Bold" align="right">£52019.75</Typography>
+                    <Typography variant="secondary" size={12} align="right">USD Value</Typography>
                 </View>
             </Div>
 

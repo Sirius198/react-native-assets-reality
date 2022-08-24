@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTempWallets } from "../../../redux/actions/assetActions";
 import { createNewOperation, getOperationsByOrg, selectOperation } from "../../../redux/actions/operationActions";
 import { clearLoadedPortfolios } from "../../../redux/actions/portfolioActions";
+import { getUserOrg } from "../../../redux/actions/authActions";
 
 export default function CaseHome({ navigation }) {
 
@@ -27,6 +28,8 @@ export default function CaseHome({ navigation }) {
     const auth = useSelector((state: any) => state.auth);
     const operations = useSelector((state: any) => state.operations.operations);
     // const tempWallets = useSelector((state: any) => state.assets.tempWallets);
+
+    // console.log(operations)
 
     useEffect(() => {
         // dispatch(getTempWallets());
@@ -52,15 +55,16 @@ export default function CaseHome({ navigation }) {
     const onInspect = (operation: any) => {
         dispatch(selectOperation(operation, auth.role));
         navigation.navigate("Inspect", {
-            op_id: operation.operation_id
+            operation_id: operation.operation_id
         })
     };
 
     const onAddCase = (case_name: string) => {
         setAddCaseModalShow(false)
+        console.log(auth.org)
         dispatch(createNewOperation({
             name: case_name,
-            organisation_id: auth.org
+            organization_id: auth.org
         }))
         console.log(case_name)
     };

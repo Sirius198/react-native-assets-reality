@@ -12,6 +12,7 @@ import styled from 'styled-components/native';
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Dropdown from "../../common/dropdown";
+import { CoinList } from "../../../constants/FilteredData";
 
 const DummyCustodians = [
     {
@@ -32,13 +33,24 @@ export default function AddAssetModal({ show, onClose }) {
     const [custodian, setCustodian] = useState(0);
     const { dark } = useTheme();
 
-
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
+    const [custodianOpen, setCustodianOpen] = useState(false);
+    const [custodianValue, setCustodianValue] = useState(null);
+    const [custodianItems, setCustodianItems] = useState([
         { label: 'Apple', value: 'apple' },
         { label: 'Banana', value: 'banana' }
     ]);
+
+    const [cryptoDropdownOpen, setCryptoDropdownOpen] = useState(false);
+    const [cryptoValue, setCryptoValue] = useState(null);
+    const [cryptoList, setCryptoList] = useState<any[]>([]);
+
+    useEffect(() => {
+        let list = [];
+        for (var i = 0; i < CoinList.length; i++) {
+            list.push({ label: CoinList[i], value: CoinList[i] });
+        }
+        setCryptoList(list);
+    }, []);
 
     useEffect(() => {
         setAssetType(0);
@@ -46,33 +58,28 @@ export default function AddAssetModal({ show, onClose }) {
         setWalletType(0);
     }, [show]);
 
+    const onCreateAsset = () => {
+        console.log(cryptoValue, custodianValue, assetType, walletType, addressType);
+    };
+
     return (
         <BaseModal show={show}>
             <ModalHeader onClose={onClose} showBackButton={false}>
                 <ModalTitle title="Add Asset" />
             </ModalHeader>
 
-            {/* <DropDownPicker
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                /> */}
-
             <ScrollViewWrapper showsVerticalScrollIndicator={false}>
 
-                <View>
-                <DropDownPicker
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                />
-                </View>
+                {/* <View>
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                    />
+                </View> */}
 
                 {/* Asset Type */}
                 <Typography weight="Medium">Select Asset Type</Typography>
@@ -141,18 +148,42 @@ export default function AddAssetModal({ show, onClose }) {
                     </>
                 }
 
-                {/* Custodian */}
                 {walletType != 0 && <>
-                    <Typography weight="Medium" style={{ marginTop: 24 }}>Select Custodian</Typography>
-                    <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Custodian you want to store the asset with</Typography>
+                    <Typography weight="Medium" style={{ marginTop: 24 }}>Pick Custodian</Typography>
+                    <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>You can edit it anytime</Typography>
 
-                    <Dropdown />
+                    <DropdownWrapper>
+                        <Typography weight="Medium" mb={10}>Custodian</Typography>
 
-                    {/* Custodian */}
+                        <DropDownPicker
+                            open={custodianOpen}
+                            value={custodianValue}
+                            items={custodianItems}
+                            setOpen={setCustodianOpen}
+                            setValue={setCustodianValue}
+                            setItems={setCustodianItems}
+                        />
+                    </DropdownWrapper>
+
+                    {/* <Dropdown /> */}
+
+                    {/* Asset */}
                     <Typography weight="Medium" style={{ marginTop: 24 }}>Select Asset</Typography>
                     <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 15 }}>Pick Asset you want to store</Typography>
 
-                    <Dropdown />
+                    <DropdownWrapper style={{ marginBottom: 15 }}>
+                        <Typography weight="Medium" mb={10}>Cryptocurrency</Typography>
+
+                        {/* <Dropdown /> */}
+                        <DropDownPicker
+                            open={cryptoDropdownOpen}
+                            value={cryptoValue}
+                            items={cryptoList}
+                            setOpen={setCryptoDropdownOpen}
+                            setValue={setCryptoValue}
+                            setItems={setCryptoList}
+                        />
+                    </DropdownWrapper>
                 </>}
 
             </ScrollViewWrapper>
@@ -160,6 +191,7 @@ export default function AddAssetModal({ show, onClose }) {
             <ModalDefaultActions
                 onCancel={onClose}
                 OkButtonText="Done"
+                onOk={onCreateAsset}
             />
         </BaseModal>
     )
@@ -167,6 +199,12 @@ export default function AddAssetModal({ show, onClose }) {
 
 const ScrollViewWrapper = styled.ScrollView`
     max-height: 500px;
+`;
+
+const DropdownWrapper = styled.View`
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #888;
 `;
 
 // const MyDD = styled(ModalDropdown)`

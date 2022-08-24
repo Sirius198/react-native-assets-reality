@@ -71,10 +71,10 @@ export const setup2FA = (token: string) => (dispatch: any) => {
         payload: data.qr_code,
       });
 
-      if (data) {
-        AsyncStorage.setItem("jwtToken", data.ar_token);
-        dispatch(setCurrentUser(data.user_id));
-      }
+      // if (data) {
+      //   AsyncStorage.setItem("jwtToken", data.ar_token);
+      //   dispatch(setCurrentUser(data.user_id));
+      // }
     })
 
     .catch((err) => {
@@ -93,6 +93,7 @@ export const confirm2FA = (data: any) => (dispatch: any) => {
     .post(`user/${data.authToken}/2fa`, token, headers())
     .then((res) => {
       const user = res.data.data;
+      console.log('user', user)
       if (user) {
         // const ar_token = localStorage.setItem("jwtToken", user.ar_token);
         // localStorage.removeItem("Qrcode");
@@ -164,6 +165,7 @@ export const getUserOrg = (data: any) => (dispatch: any) => {
     .get(`org/me`, headers())
     .then((res) => {
       const data = res.data.data;
+      console.log(data, 'userorg')
       dispatch({
         type: GET_USER_ORG,
         payload: data[0].id,
