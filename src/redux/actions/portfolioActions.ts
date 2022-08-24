@@ -7,9 +7,9 @@ import {
   CLEAR_PORTFOLIOS,
   SET_PORT,
 } from "../types";
-import http from "../../@core/utils/https-common";
 import headers from "./headers";
 import { getAssets } from "./assetActions";
+import http from "../../utils/https-common";
 
 export const createPortfolio =
   (payload: any, id: string) => (dispatch: any) => {

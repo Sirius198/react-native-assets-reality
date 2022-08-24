@@ -4,7 +4,13 @@ import styled from 'styled-components/native';
 import PrimaryButton from "../../common/buttons/PrimaryButton";
 import { useTheme } from "@react-navigation/native";
 
-const PortfolioStat = () => {
+interface IPortfolioStat {
+    assetCount: number;
+}
+
+const PortfolioStat = ({
+    assetCount
+}: IPortfolioStat) => {
 
     const { dark, colors } = useTheme();
     return (
@@ -18,7 +24,7 @@ const PortfolioStat = () => {
 
             <StatRow odd dark={dark}>
                 <Typography variant="secondary">Number of Assets</Typography>
-                <Typography variant="primary">13</Typography>
+                <Typography variant="primary">{assetCount}</Typography>
             </StatRow>
 
             <StatRow dark={dark}>

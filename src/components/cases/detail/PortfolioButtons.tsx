@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text, StyleSheet, ScrollView } from "react-nati
 import Typography from "../../common/typography/Typography";
 import styled from 'styled-components/native';
 
-const PortfolioButtons = ({ activeId, onChange }) => {
+const PortfolioButtons = ({ activeId, onChange, portfolios }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
         setActiveIndex(activeId);
@@ -11,12 +11,12 @@ const PortfolioButtons = ({ activeId, onChange }) => {
 
     return (
         <ScrollView horizontal style={{ marginTop: 0 }} showsHorizontalScrollIndicator={false}>
-            {[1, 2, 3, 4].map((value, index) => (
+            {portfolios.map((value, index) => (
                 <PfButton
                     key={index}
                     active={index === activeIndex}
                     index={index}
-                    onPress={i => { setActiveIndex(i); onChange(i); }}
+                    onPress={(i: number) => { setActiveIndex(i); onChange(i); }}
                 />
             ))}
         </ScrollView>

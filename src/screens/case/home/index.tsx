@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
 import CaseInfoPanel from "../../../components/cases/CaseInfoPanel";
 import WalletSelectModal from "../../../components/cases/modal/WalletSelectModal";
@@ -13,12 +13,26 @@ import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
 import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
 import { WalletSvg } from "../../../components/common/svg/TestSvg";
 import HeaderButton from "../../../components/common/buttons/HeaderButton";
+import { useDispatch, useSelector } from "react-redux";
+import { getTempWallets } from "../../../redux/actions/assetActions";
+import { createNewOperation, getOperationsByOrg, selectOperation } from "../../../redux/actions/operationActions";
+import { clearLoadedPortfolios } from "../../../redux/actions/portfolioActions";
 
 export default function CaseHome({ navigation }) {
 
     const [addCaseModalShow, setAddCaseModalShow] = useState(false);
     const [coldWalletModalShow, setColdWalletModalShow] = useState(false);
     const { dark } = useTheme();
+    const dispatch = useDispatch();
+    const auth = useSelector((state: any) => state.auth);
+    const operations = useSelector((state: any) => state.operations.operations);
+    // const tempWallets = useSelector((state: any) => state.assets.tempWallets);
+
+    useEffect(() => {
+        // dispatch(getTempWallets());
+        dispatch(getOperationsByOrg(auth.org));
+        // dispatch(clearLoadedPortfolios());
+    }, [auth.org, dispatch]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -35,12 +49,19 @@ export default function CaseHome({ navigation }) {
         })
     }, []);
 
-    const onInspect = (case_id) => {
-        navigation.navigate("Inspect")
+    const onInspect = (operation: any) => {
+        dispatch(selectOperation(operation, auth.role));
+        navigation.navigate("Inspect", {
+            op_id: operation.operation_id
+        })
     };
 
-    const onAddCase = (case_name) => {
+    const onAddCase = (case_name: string) => {
         setAddCaseModalShow(false)
+        dispatch(createNewOperation({
+            name: case_name,
+            organisation_id: auth.org
+        }))
         console.log(case_name)
     };
 
@@ -70,8 +91,8 @@ export default function CaseHome({ navigation }) {
             </View>
 
             {/* List of cases */}
-            {[1, 2, 3, 4, 5].map((_, index) => (
-                <CaseInfoPanel key={index} onInspect={onInspect} />
+            {operations.map((operation: any, index: number) => (
+                <CaseInfoPanel key={index} onInspect={onInspect} value={operation} />
             ))}
 
             <WalletSelectModal
@@ -82,7 +103,7 @@ export default function CaseHome({ navigation }) {
             <AddCaseModal
                 show={addCaseModalShow}
                 onClose={() => setAddCaseModalShow(false)}
-                onOk={(name) => onAddCase(name)}
+                onOk={(name: string) => onAddCase(name)}
             />
         </MainContentWrapper>
     )
@@ -100,6 +121,6 @@ const TotalValueIconWrapper = styled.View`
     justify-content: center;
     border: 1px solid;
     border-radius: 10px;
-    border-color: ${props => props.dark ? '#353946' : '#F0F0FA'};
-    background-color: ${props => props.dark ? 'rgba(53, 57, 70, 0.25)' : '#FFF'};
+    border-color: ${(props: any) => props.dark ? '#353946' : '#F0F0FA'};
+    background-color: ${(props: any) => props.dark ? 'rgba(53, 57, 70, 0.25)' : '#FFF'};
 `;

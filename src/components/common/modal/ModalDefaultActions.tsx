@@ -3,12 +3,19 @@ import styled from 'styled-components/native'
 import { PrimaryButton } from '../styles';
 import Typography from '../typography/Typography';
 
+interface IModalDefaultActions {
+    onOk?: Function | null;
+    onCancel?: Function | null;
+    OkButtonText?: string;
+    CancelButtonText?: string;
+}
+
 const ModalDefaultActions = ({
     onOk = null,
     onCancel = null,
     OkButtonText = "OK",
     CancelButtonText = "Cancel",
-}) => {
+}: IModalDefaultActions) => {
     const { dark } = useTheme();
     return (
         <Wrapper>
@@ -39,7 +46,7 @@ const Wrapper = styled.View`
 `;
 
 const CancelButton = styled.TouchableOpacity`
-    background-color: ${props => props.dark ? 'rgba(53, 57, 70, 0.3)' : '#f7f8fa'};
+    background-color: ${(props: any) => props.dark ? 'rgba(53, 57, 70, 0.3)' : '#f7f8fa'};
     padding: 17px;
     align-items: center;
     justify-content: center;

@@ -8,9 +8,9 @@ import {
   ADD_ASSET,
   GET_ASSET,
 } from "../types";
-import http from "../../@core/utils/https-common";
 import headers from "./headers";
 import { checkUserPermission } from "./permissionActions";
+import http from "../../utils/https-common";
 
 // const Airtable = require("airtable");
 // var base = new Airtable({ apiKey: "keyep7E4OjDIn6Bc8" }).base(
@@ -85,7 +85,7 @@ export const selectOperation =
         type: SELECT_OP,
         payload: data,
       });
-      history.push(`/operation/${data.operation_id}`);
+      // history.push(`/operation/${data.operation_id}`);
     }
   };
 

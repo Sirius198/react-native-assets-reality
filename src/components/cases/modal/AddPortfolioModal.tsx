@@ -57,15 +57,6 @@ const AddPortfolioModal = ({ show, onClose }) => {
             <ModalDefaultActions
                 OkButtonText="Done"
             />
-
-            {/* <ModalActions>
-                <SecondaryButton style={{ flex: 1 }}>
-                    <Typography>Cancel</Typography>
-                </SecondaryButton>
-                <PrimaryButton style={{ flex: 1 }}>
-                    <Typography style={{ color: 'white' }}>Done</Typography>
-                </PrimaryButton>
-            </ModalActions> */}
         </BaseModal>
     )
 };

@@ -51,7 +51,8 @@ export const authReducer = (state = initState.auth, action: any) => {
     case "clear_all":
       return {
         ...state,
-        isAuthenticated: false
+        isAuthenticated: false,
+        is2FAuthenticated: false,
       }
     case types.LOGOUT:
       return initState.auth;

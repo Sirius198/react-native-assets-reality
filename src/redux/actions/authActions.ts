@@ -1,5 +1,4 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import jwt_decode from "jwt-decode";
 import http from "../../utils/https-common";
 import {
   PROFILE_LOADING,
@@ -27,7 +26,7 @@ export const setCurrentUser = (decoded: any) => {
 
 // 1.Authenticate
 export const Authenticate = (payload: any) => (dispatch: any) => {
-  // dispatch({ type: PROFILE_LOADING });
+  dispatch({ type: PROFILE_LOADING });
   http
     .post(`user/authenticate`, payload, headers())
 
@@ -60,10 +59,8 @@ export const Authenticate = (payload: any) => (dispatch: any) => {
 };
 
 // Get 2FA QR Code
-export const setup2FA = (token: string) => async (dispatch: any) => {
+export const setup2FA = (token: string) => (dispatch: any) => {
   dispatch({ type: PROFILE_LOADING });
-  // const jwtToken = 
-  console.log('here!', token, await AsyncStorage.getItem("jwtToken"))
   http
     .get(`user/${token}/2fa`, headers())
     .then((res) => {
@@ -72,7 +69,6 @@ export const setup2FA = (token: string) => async (dispatch: any) => {
       dispatch({
         type: GET_QR,
         payload: data.qr_code,
-        // payload: localStorage.setItem("Qrcode",data.qr_code),
       });
 
       if (data) {

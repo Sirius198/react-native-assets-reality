@@ -1,4 +1,4 @@
-import http from "../../@core/utils/https-common";
+import http from "../../utils/https-common";
 import {
   ADD_ASSET,
   ADD_PERMISSION,

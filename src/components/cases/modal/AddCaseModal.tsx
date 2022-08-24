@@ -10,11 +10,14 @@ import BaseModal, { ModalActions } from "../../common/modal";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import ModalHeader from "../../common/modal/ModalHeader";
 import ModalTitle from "../../common/modal/ModalTitle";
-import { SecondaryButton, PrimaryButton } from "../../common/styles";
-import IconBox from "../../common/svg/IconBox";
-import Typography from "../../common/typography/Typography";
 
-const AddCaseModal = ({ show, onClose, onOk }) => {
+interface IAddCaseModal {
+    show: boolean;
+    onClose: Function;
+    onOk: Function;
+}
+
+const AddCaseModal = ({ show, onClose, onOk }: IAddCaseModal) => {
 
     const [visible, setVisible] = useState(show)
     const [caseName, setCaseName] = useState('')
@@ -34,7 +37,7 @@ const AddCaseModal = ({ show, onClose, onOk }) => {
                 <FormInput
                     placeholder="Case name"
                     value={caseName}
-                    onChange={({ text }) => setCaseName(text)}
+                    onChangeText={setCaseName}
                 />
 
                 {/* <Typography>Portfolio</Typography>

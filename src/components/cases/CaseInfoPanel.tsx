@@ -12,7 +12,7 @@ import Label from '../common/base/Label';
 import IconWrapper from '../common/base/IconWrapper';
 import MySVG from '../common/svg';
 
-const CaseInfoPanel = ({ onInspect }) => {
+const CaseInfoPanel = ({ onInspect, value }) => {
 
     const { dark, colors: themeColors } = useTheme();
     const [expanded, setExpanded] = useState(false);
@@ -23,7 +23,7 @@ const CaseInfoPanel = ({ onInspect }) => {
                 <Row>
                     <View>
                         <Typography variant='secondary' size={12} weight="Light">Case Name</Typography>
-                        <Typography variant='primary' size={16} weight="SemiBold">Klondike</Typography>
+                        <Typography variant='primary' size={16} weight="SemiBold">{value.operation_name}</Typography>
                     </View>
                     <Label variant='info'>Active</Label>
                 </Row>
@@ -32,11 +32,11 @@ const CaseInfoPanel = ({ onInspect }) => {
 
                 <Row>
                     <View>
-                        <Typography variant='primary' size={16} weight="Bold">12</Typography>
+                        <Typography variant='primary' size={16} weight="Bold">{value.portfolio_count}</Typography>
                         <Typography variant='secondary' size={12}>Portfolios</Typography>
                     </View>
                     <View>
-                        <Typography variant='primary' size={16} weight="Bold" align='right'>05</Typography>
+                        <Typography variant='primary' size={16} weight="Bold" align='right'>{value.asset_count}</Typography>
                         <Typography variant='secondary' size={12}>Assets</Typography>
                     </View>
                 </Row>
@@ -58,7 +58,7 @@ const CaseInfoPanel = ({ onInspect }) => {
 
                 <View style={{ flexDirection: 'row', }}>
                     <PrimaryButton
-                        onPress={() => onInspect(1)}
+                        onPress={() => onInspect(value)}
                         style={{ flex: 1, marginRight: 10 }}
                     >
                         Inspect

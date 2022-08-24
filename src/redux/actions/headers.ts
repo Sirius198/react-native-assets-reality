@@ -11,7 +11,8 @@ export const notiheaders = () => {
   return axiosConfigHeaders;
 };
 export const headers = (AR_Token?: any) => {
-  let Authorization = AsyncStorage.getItem("jwtToken");
+  // let Authorization = AsyncStorage.getItem("jwtToken");
+  let Authorization = "ZfLLtGNLMrhnbXORRZGRzFwHQYlefpAklfaDsVcsFMoRFpWxVRtuOGCYLAIUdMFf";
   let axiosConfigHeaders = {
     headers: {
       "Content-Type": "application/json",
