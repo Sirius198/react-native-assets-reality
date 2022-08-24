@@ -38,8 +38,15 @@ const CaseInspectPage = ({ navigation, route }) => {
                     onPress={() => setAddPortfolioModalShow(true)}
                 />
             ),
-        })
+        });
     }, []);
+
+    const gotoAssetsPage = () => {
+        console.log(portfolios)
+        navigation.navigate('Assets', {
+            portfolio: portfolios[activePortfolio]
+        });
+    };
 
     return (
         <MainContentWrapper>
@@ -50,7 +57,7 @@ const CaseInspectPage = ({ navigation, route }) => {
                 <OutlineButton
                     text="Total Assets"
                     style={{ marginRight: 16, flex: 1 }}
-                    onPress={() => navigation.navigate('Assets')}
+                    onPress={gotoAssetsPage}
                 />
                 <OutlineButton
                     text="Recent Activity"

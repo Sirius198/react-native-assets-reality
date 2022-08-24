@@ -1,27 +1,31 @@
 import { useTheme } from "@react-navigation/native";
-import { View, TouchableOpacity } from "react-native"
+import { View, TouchableOpacity, Image } from "react-native";
+import { SvgUri } from "react-native-svg";
 // import { SvgUri } from "react-native-svg";
 import styled from "styled-components/native";
+import { assets } from "../../../../react-native.config";
 import IconWrapper from "../../common/base/IconWrapper";
 import Divider from "../../common/divider";
 import MySVG from "../../common/svg";
 import IconBox from "../../common/svg/IconBox";
 import Typography from "../../common/typography/Typography";
 
-const AssetItem = ({ onQuickAction }) => {
+const AssetItem = ({ onQuickAction, asset }) => {
+
     const { dark, colors } = useTheme();
+
     return (
         <Wrapper style={{ backgroundColor: colors.card }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                {/* <SvgUri
-                    width="100"
-                    height="100"
-                    uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg"
-                /> */}
-                <MySVG.Bitcoin width={30} height={30} />
+                <Image
+                    source={{ uri: "https://xk8s6gfm71.execute-api.eu-west-2.amazonaws.com/Prod/?style=color&size=30&currency=" + asset.asset_type.toLowerCase() }}
+                    style={{ width: 30, height: 30 }}
+                />
+                {/* https://xk8s6gfm71.execute-api.eu-west-2.amazonaws.com/Prod/?style=color&currency=eth&size=30 */}
+                {/* <MySVG.Bitcoin width={30} height={30} /> */}
                 <View style={{ marginLeft: 10 }}>
-                    <Typography weight="Bold">BTC</Typography>
-                    <Typography variant="secondary" size={12}>Bitcoin</Typography>
+                    <Typography weight="Bold">{asset.asset_type}</Typography>
+                    <Typography variant="secondary" size={12}>{asset.asset_type}</Typography>
                 </View>
             </View>
 
@@ -29,11 +33,11 @@ const AssetItem = ({ onQuickAction }) => {
 
             <Div>
                 <View>
-                    <Typography variant="percent" size={16} weight="Bold">+1.53%</Typography>
+                    <Typography variant="percent" size={16} weight="Bold">{asset.daily_change}%</Typography>
                     <Typography variant="secondary" size={12}>24% Change</Typography>
                 </View>
                 <View>
-                    <Typography variant="primary" size={16} weight="Bold" align="right">£52019.75</Typography>
+                    <Typography variant="primary" size={16} weight="Bold" align="right">{asset.usd_value}</Typography>
                     <Typography variant="secondary" size={12} align="right">USD Value</Typography>
                 </View>
             </Div>
@@ -42,7 +46,7 @@ const AssetItem = ({ onQuickAction }) => {
 
             <Div>
                 <View>
-                    <Typography variant="primary" size={16} weight="Bold">1.42 BTC</Typography>
+                    <Typography variant="primary" size={16} weight="Bold">{asset.value} {asset.asset_type}</Typography>
                     <Typography variant="secondary" size={12}>Balance</Typography>
                 </View>
 

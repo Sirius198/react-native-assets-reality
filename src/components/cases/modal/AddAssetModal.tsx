@@ -11,8 +11,10 @@ import Typography from "../../common/typography/Typography";
 import styled from 'styled-components/native';
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import Dropdown from "../../common/dropdown";
+// import Dropdown from "../../common/dropdown";
 import { CoinList } from "../../../constants/FilteredData";
+import { createAsset } from "../../../redux/actions/assetActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const DummyCustodians = [
     {
@@ -25,19 +27,20 @@ const DummyCustodians = [
     },
 ];
 
-export default function AddAssetModal({ show, onClose }) {
+export default function AddAssetModal({ show, onClose, portfolio }) {
 
     const [assetType, setAssetType] = useState(0);
     const [addressType, setAddressType] = useState(0);
     const [walletType, setWalletType] = useState(0);
-    const [custodian, setCustodian] = useState(0);
     const { dark } = useTheme();
+    const dispatch = useDispatch();
+    const auth = useSelector((state: any) => state.auth);
 
     const [custodianOpen, setCustodianOpen] = useState(false);
     const [custodianValue, setCustodianValue] = useState(null);
     const [custodianItems, setCustodianItems] = useState([
-        { label: 'Apple', value: 'apple' },
-        { label: 'Banana', value: 'banana' }
+        { label: 'Digivault', value: 'digivault' },
+        { label: 'Other', value: 'other' }
     ]);
 
     const [cryptoDropdownOpen, setCryptoDropdownOpen] = useState(false);
@@ -59,7 +62,25 @@ export default function AddAssetModal({ show, onClose }) {
     }, [show]);
 
     const onCreateAsset = () => {
+        onClose();
         console.log(cryptoValue, custodianValue, assetType, walletType, addressType);
+
+        const data: any = {
+            fields: {
+                name: "test",
+                organisation_id: auth.org,
+                portfolio_id: portfolio.id,
+                operation_id: portfolio.operation_id,
+                asset_type: cryptoValue,
+                wallet_type: "Warm",
+                existing_address: "",
+                custodian: custodianValue,
+                is_airtable: true,
+                already_exists: false,
+            },
+        };
+
+        dispatch(createAsset(data.fields));
     };
 
     return (

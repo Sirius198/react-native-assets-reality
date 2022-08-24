@@ -1,6 +1,7 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { View } from 'react-native';
-import styled from 'styled-components/native'
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components/native';
 import AssetItem from '../../../components/cases/detail/AssetItem';
 import AddAssetModal from '../../../components/cases/modal/AddAssetModal';
 import AssetQRCodeModal from '../../../components/cases/modal/AssetQRCodeModal';
@@ -9,14 +10,26 @@ import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import SearchBox from '../../../components/common/input/SearchBox';
 import Typography from '../../../components/common/typography/Typography';
+import { getAssets } from '../../../redux/actions/assetActions';
 
-export default function TotalAssetsPage({ navigation }) {
+export default function TotalAssetsPage({ route, navigation }) {
+
+    const { portfolio } = route.params;
 
     const [showAddAssetModal, setShowAddAssetModal] = useState(false);
     const [showQuickActionModal, setShowQuickActionModal] = useState(false);
     const [showQRCodeModal, setShowQRCodeModal] = useState(false);
+    const assets = useSelector((state: any) => state.assets.assets);
+    const dispatch = useDispatch();
+    const [selectedAsset, setSelectedAsset] = useState<any>(undefined);
 
-    const doQuickAction = () => {
+    useEffect(() => {
+        dispatch(getAssets(portfolio.id));
+    }, [dispatch, portfolio]);
+    console.log(assets)
+
+    const doQuickAction = (asset: any) => {
+        setSelectedAsset(asset);
         setShowQuickActionModal(true);
     };
 
@@ -40,28 +53,31 @@ export default function TotalAssetsPage({ navigation }) {
         <Wrapper>
             <SearchBox style={{ marginBottom: 16 }} />
 
-            {[1, 2,].map((_, index) => (
-                <AssetItem key={index} onQuickAction={() => doQuickAction()} />
+            {assets.map((ast, index) => (
+                <AssetItem key={index} onQuickAction={() => doQuickAction(ast)} asset={ast} />
             ))}
 
             <OutlineButton text="View More" />
 
             <AddAssetModal
+                portfolio={portfolio}
                 show={showAddAssetModal}
                 onClose={() => setShowAddAssetModal(false)}
             />
 
-            <AssetQuickActionModal
+            {selectedAsset && <AssetQuickActionModal
                 show={showQuickActionModal}
+                asset={selectedAsset}
                 onClose={() => setShowQuickActionModal(false)}
                 onNext={() => {
                     setShowQuickActionModal(false);
                     setShowQRCodeModal(true);
                 }}
-            />
+            />}
 
-            <AssetQRCodeModal
+            {selectedAsset && <AssetQRCodeModal
                 show={showQRCodeModal}
+                asset={selectedAsset}
                 onClose={() => {
                     setShowQRCodeModal(false);
                     setShowQuickActionModal(true);
@@ -69,7 +85,7 @@ export default function TotalAssetsPage({ navigation }) {
                 onOk={() => {
                     setShowQRCodeModal(false);
                 }}
-            />
+            />}
         </Wrapper>
     )
 }
