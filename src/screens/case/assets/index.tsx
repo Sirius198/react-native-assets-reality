@@ -49,7 +49,7 @@ export default function TotalAssetsPage({ route, navigation }) {
             ),
         })
     }, []);
-    console.log(assets_loading)
+    console.log(assets)
 
     if (assets_loading)
         return <LoadingScreen />

@@ -14,7 +14,6 @@ const AssetValueChart = () => {
     const dispatch = useDispatch();
     const { dark } = useTheme();
     const graphData = useSelector((state: any) => state.operations.graphData);
-    const [chartData, setChartData] = useState<any>(undefined);
 
     useEffect(() => {
         const data = [
@@ -33,47 +32,9 @@ const AssetValueChart = () => {
         dispatch(getGraphData(data));
     }, []);
 
-    useEffect(() => {
-        let labels = [];
-        let yValue = [];
-        for (var i = 0; i < graphData.length; i++) {
-            labels.push(graphData[i].x);
-            yValue.push(graphData[i].y);
-        }
-
-        setChartData({
-            labels,
-            datasets: [
-                {
-                    data: yValue,
-                    color: () => `#008FFB`, // optional
-                    strokeWidth: 2,
-                    withDots: false,
-                    withScrollableDot: false
-                },
-            ],
-        })
-    }, [graphData]);
-    console.log(graphData)
-
     return (
         <Wrapper>
-            {/* {chartData && <LineChart
-                data={chartData}
-                width={screenWidth}
-                height={220}
-                chartConfig={chartConfig}
-                withVerticalLines={false}
-                withVerticalLabels={true}
-                withHorizontalLabels={false}
-                // bezier={true}
-                segments={8}
-                style={{
-                    paddingLeft: 0,
-                    width: '100%'
-                }}
-            />} */}
-            {chartData &&
+            {graphData &&
                 <AreaChart
                     width={screenWidth}
                     height={220}
@@ -96,7 +57,7 @@ const AssetValueChart = () => {
                         fillOpacity={1}
                         activeDot={{ r: 8 }}
                     />
-                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 5" /> */}
                     <XAxis dataKey="x" />
                     {/* <YAxis axisLine={false} /> */}
                     <Tooltip content={<TooltipContent />} />
