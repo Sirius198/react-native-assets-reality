@@ -45,11 +45,11 @@ const CaseInfoPanel = ({ onInspect, value }) => {
 
                 <Row>
                     <View>
-                        <Typography variant='currency' size={16} weight="Bold">+₤11,145.52</Typography>
+                        <Typography variant='currency' size={16} weight="Bold">0</Typography>
                         <Typography variant='secondary' size={12}>Recently Added</Typography>
                     </View>
                     <View>
-                        <Typography variant='primary' size={16} weight="Bold" align="right">+₤11,145.52</Typography>
+                        <Typography variant='primary' size={16} weight="Bold" align="right">0</Typography>
                         <Typography variant='secondary' size={12} align="right">Total Holdings</Typography>
                     </View>
                 </Row>

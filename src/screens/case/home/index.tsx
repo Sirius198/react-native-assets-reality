@@ -34,6 +34,7 @@ export default function CaseHome({ navigation }) {
         dispatch(getOperationsByOrg(auth.org));
         // dispatch(clearLoadedPortfolios());
     }, [auth.org, dispatch]);
+    
     useEffect(() => {
         let data = [];
         for (var i = operations.length - 1; i >= 0; i--)

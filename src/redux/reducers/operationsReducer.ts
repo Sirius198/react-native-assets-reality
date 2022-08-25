@@ -64,6 +64,11 @@ export const operationsReducer = (
         ...state,
         graphData: action.payload,
       }
+    case types.CLEAR_GRAPH_DATA:
+      return {
+        ...state,
+        graphData: []
+      }
     default:
       return state;
   }

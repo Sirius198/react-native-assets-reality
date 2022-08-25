@@ -27,7 +27,6 @@ const CaseInspectPage = ({ navigation, route }) => {
     }, [operation_id]);
 
     useEffect(() => {
-        console.log(opLoading, portfolios.length)
         if (opLoading == false && portfolios.length == 0)
             setAddPortfolioModalShow(true);
         else

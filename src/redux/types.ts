@@ -80,3 +80,4 @@ export const GET_OP_PERMISSIONS = "GET_OP_PERMISSIONS";
 
 // Graph data
 export const SET_GRAPH_DATA = "SET_GRAPH_DATA";
+export const CLEAR_GRAPH_DATA = "CLEAR_GRAPH_DATA";

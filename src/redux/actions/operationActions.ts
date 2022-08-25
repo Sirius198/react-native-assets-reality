@@ -11,6 +11,7 @@ import {
 import headers from "./headers";
 import { checkUserPermission } from "./permissionActions";
 import http from "../../utils/https-common";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // const Airtable = require("airtable");
 // var base = new Airtable({ apiKey: "keyep7E4OjDIn6Bc8" }).base(
@@ -56,10 +57,11 @@ export const getOperationsByUser = (dispatch: any) => {
     });
 };
 
-export const getOperationsByOrg = (data: string) => (dispatch: any) => {
+export const getOperationsByOrg = (data: string) => async (dispatch: any) => {
   dispatch({ type: OPERATION_LOADING });
+  let token = await AsyncStorage.getItem("jwtToken");
   http
-    .get(`/org/${data}/operations`, headers())
+    .get(`/org/${data}/operations`, headers(token))
     .then((res) => {
       const data = res.data.data;
       dispatch({
@@ -77,7 +79,6 @@ export const getOperationsByOrg = (data: string) => (dispatch: any) => {
 
 export const selectOperation =
   (data: any, role: string, history: any) => (dispatch: any) => {
-    console.log(role);
     if (role !== "admin") {
       dispatch(checkUserPermission(data, role, history));
     } else {

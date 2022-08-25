@@ -6,6 +6,7 @@ import {
   OPERATION_LOADING,
   CLEAR_PORTFOLIOS,
   SET_PORT,
+  SET_GRAPH_DATA,
 } from "../types";
 import headers from "./headers";
 import { getAssets } from "./assetActions";
@@ -14,11 +15,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 export const createPortfolio =
-  (payload: any, id: string) => (dispatch: any) => {
+  (payload: any, id: string) => async (dispatch: any) => {
     dispatch({ type: OPERATION_LOADING });
+    let token = await AsyncStorage.getItem("jwtToken");
 
     http
-      .post(`/operation/${id}/portfolio`, payload, headers())
+      .post(`/operation/${id}/portfolio`, payload, headers(token))
       .then((res) => {
         const data = res.data.data;
         dispatch({
@@ -35,10 +37,11 @@ export const createPortfolio =
       });
   };
 
-export const getPortfoliosByOperation = (id: string) => (dispatch: any) => {
+export const getPortfoliosByOperation = (id: string) => async (dispatch: any) => {
   dispatch({ type: OPERATION_LOADING });
+  let token = await AsyncStorage.getItem("jwtToken");
   http
-    .get(`/operation/${id}/portfolio?page=1&limit=50`, headers())
+    .get(`/operation/${id}/portfolio?page=1&limit=50`, headers(token))
     .then((res) => {
       const data = res.data.data;
       if (data.length > 0) {
@@ -92,9 +95,9 @@ export const setPortfolio = (data: any) => (dispatch: any) => {
 
 export const getGraphData = (data: any) => async (dispatch: any) => {
   let token = await AsyncStorage.getItem("jwtToken");
-  // console.log(Authorization)
+  
   const tt = axios.create({
-    baseURL: "https://wxebsd8cy6.execute-api.eu-west-2.amazonaws.com",
+    baseURL: "https://infinite-brook-33846.herokuapp.com/https://wxebsd8cy6.execute-api.eu-west-2.amazonaws.com/Prod",
     headers: {
       "Content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -102,9 +105,12 @@ export const getGraphData = (data: any) => async (dispatch: any) => {
       "Access-Control-Allow-Methods": "GET, PUT, POST",
     },
   });
-  tt.post('/Prod', data, headers(token))
+  tt.post('/', data)
     .then((res) => {
-      console.log(res)
+      dispatch({
+        type: SET_GRAPH_DATA,
+        payload: res.data
+      });
     })
     .catch((err) => {
       console.log(err)

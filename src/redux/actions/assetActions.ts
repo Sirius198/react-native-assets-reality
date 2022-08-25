@@ -1,4 +1,5 @@
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import http from "../../utils/https-common";
 import {
   ADD_ASSET,
@@ -9,10 +10,11 @@ import {
 } from "../types";
 import headers from "./headers";
 
-export const getAssets = (id: any) => (dispatch: any) => {
+export const getAssets = (id: any) => async (dispatch: any) => {
   dispatch({ type: ASSETS_LOADING });
+  let token = await AsyncStorage.getItem("jwtToken");
   http
-    .get(`/portfolio/${id}/assets`, headers())
+    .get(`/portfolio/${id}/assets`, headers(token))
     .then((res) => {
       const data = res.data.data;
       dispatch({
@@ -28,10 +30,11 @@ export const getAssets = (id: any) => (dispatch: any) => {
     });
 };
 
-export const createAsset = (data: any) => (dispatch: any) => {
+export const createAsset = (data: any) => async (dispatch: any) => {
   dispatch({ type: ASSETS_LOADING });
+  let token = await AsyncStorage.getItem("jwtToken");
   http
-    .post(`/portfolio/asset/add`, data, headers())
+    .post(`/portfolio/asset/add`, data, headers(token))
     .then((res) => {
       const data = res.data.data;
       dispatch({

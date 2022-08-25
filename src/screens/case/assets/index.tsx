@@ -27,7 +27,6 @@ export default function TotalAssetsPage({ route, navigation }) {
     useEffect(() => {
         dispatch(getAssets(portfolio.id));
     }, [dispatch, portfolio]);
-    console.log(assets)
 
     const doQuickAction = (asset: any) => {
         setSelectedAsset(asset);

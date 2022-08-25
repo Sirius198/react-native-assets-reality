@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, Dimensions, useWindowDimensions } from "react-native";
 import {
     LineChart,
@@ -8,15 +8,17 @@ import {
     ContributionGraph,
     StackedBarChart
 } from "react-native-chart-kit";
-import { useDispatch } from "react-redux";
+// import { LineChart, Line } from 'recharts';
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/native";
 import { getGraphData } from "../../../redux/actions/portfolioActions";
 
 const AssetValueChart = () => {
 
-    // const screenWidth = Dimensions.get("window").width;
     const { width: screenWidth } = useWindowDimensions();
     const dispatch = useDispatch();
+    const graphData = useSelector((state: any) => state.operations.graphData);
+    const [chartData, setChartData] = useState<any>(undefined);
 
     useEffect(() => {
         const data = [
@@ -31,14 +33,37 @@ const AssetValueChart = () => {
                 "amount": 10
             }
         ];
-        
+
         dispatch(getGraphData(data));
     }, []);
 
+    useEffect(() => {
+        let labels = [];
+        let yValue = [];
+        for (var i = 0; i < graphData.length; i++) {
+            labels.push(graphData[i].x);
+            yValue.push(graphData[i].y);
+        }
+
+        setChartData({
+            labels,
+            datasets: [
+                {
+                    data: yValue,
+                    color: () => `#008FFB`, // optional
+                    strokeWidth: 2,
+                    withDots: false,
+                    withScrollableDot: false
+                },
+            ],
+        })
+        console.log(labels.length, yValue.length)
+    }, [graphData]);
+
     return (
         <Wrapper>
-            <LineChart
-                data={data}
+            {chartData && <LineChart
+                data={chartData}
                 width={screenWidth}
                 height={220}
                 chartConfig={chartConfig}
@@ -51,7 +76,7 @@ const AssetValueChart = () => {
                     paddingLeft: 0,
                     width: '100%'
                 }}
-            />
+            />}
         </Wrapper>
     )
 };
@@ -77,14 +102,14 @@ const data = {
             strokeWidth: 2,
             withDots: false,
             withScrollableDot: false
-        }
+        },
     ],
     // legend: ["Rainy Days"] // optional
 };
 
 const Wrapper = styled.View`
-    margin-left: -60px;
-    margin-right: -20px;
+    // margin-left: -60px;
+    // margin-right: -20px;
 `;
 
 export default AssetValueChart;
