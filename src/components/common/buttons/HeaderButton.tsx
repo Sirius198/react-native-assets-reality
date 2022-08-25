@@ -7,9 +7,8 @@ export default function HeaderButton({ type = 'back', ...rest }) {
     const { dark } = useTheme();
     return (
         <Wrapper dark={dark} {...rest}>
-            {type === 'back' && <MySVG.AngleLeft style={{ color: '#363853' }} />}
+            {type === 'back' && <MySVG.AngleLeft style={{ color: dark ? '#FFF' : '#363853' }} />}
             {type === 'close' && <MySVG.XIcon style={{ color: '#8A8B9D' }} />}
-
         </Wrapper>
     )
 }

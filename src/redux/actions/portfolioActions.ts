@@ -10,6 +10,8 @@ import {
 import headers from "./headers";
 import { getAssets } from "./assetActions";
 import http from "../../utils/https-common";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 export const createPortfolio =
   (payload: any, id: string) => (dispatch: any) => {
@@ -86,6 +88,27 @@ export const setPortfolio = (data: any) => (dispatch: any) => {
     type: SET_PORT,
     payload: data,
   });
+};
+
+export const getGraphData = (data: any) => async (dispatch: any) => {
+  let token = await AsyncStorage.getItem("jwtToken");
+  // console.log(Authorization)
+  const tt = axios.create({
+    baseURL: "https://wxebsd8cy6.execute-api.eu-west-2.amazonaws.com",
+    headers: {
+      "Content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Methods": "GET, PUT, POST",
+    },
+  });
+  tt.post('/Prod', data, headers(token))
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 };
 // getPortsByUser
 

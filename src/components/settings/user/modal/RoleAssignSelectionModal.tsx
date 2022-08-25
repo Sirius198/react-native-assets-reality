@@ -27,8 +27,21 @@ const RoleAssignSelectionModal = ({ show, onClose, currentRole, onRemove, onAssi
                     primary={index === 0}
                     onPress={() => onAssign(0)}
                 >
-                    <Typography size={15} weight="SemiBold" style={{ marginBottom: 8 }}>Assign as {role}</Typography>
-                    <Typography size={14} variant="secondary">Manage the Workspace, add or remove custodians</Typography>
+                    <Typography
+                        size={15}
+                        variant={index === 0 ? 'active' : 'primary'}
+                        weight="SemiBold"
+                        style={{ marginBottom: 8 }}
+                    >
+                        Assign as {role}
+                    </Typography>
+
+                    <Typography
+                        size={14}
+                        variant={index === 0 ? 'active' : 'secondary'}
+                    >
+                        Manage the Workspace, add or remove custodians
+                    </Typography>
                 </BigButton>
             )
             )}

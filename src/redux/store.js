@@ -24,16 +24,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // Middleware: Redux Persist Persisted Reducer
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // options like actionSanitizer, stateSanitizer
-    })
+    // options like actionSanitizer, stateSanitizer
+  })
   : compose;
 
 const store = createStore(
   persistedReducer,
-  composeEnhancers(
-    applyMiddleware(...middleware)
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  applyMiddleware(thunk)
 );
 
 // export const store = createStore(persistedReducer)

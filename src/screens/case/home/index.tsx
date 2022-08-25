@@ -11,8 +11,6 @@ import { useTheme } from "@react-navigation/native";
 import OutlineButton from "../../../components/common/buttons/OutlineButton";
 import AddCaseModal from "../../../components/cases/modal/AddCaseModal";
 import MainContentWrapper from "../../../components/common/base/MainContentWrapper";
-import { WalletSvg } from "../../../components/common/svg/TestSvg";
-import HeaderButton from "../../../components/common/buttons/HeaderButton";
 import { useDispatch, useSelector } from "react-redux";
 import { getTempWallets } from "../../../redux/actions/assetActions";
 import { createNewOperation, getOperationsByOrg, selectOperation } from "../../../redux/actions/operationActions";
@@ -24,18 +22,28 @@ export default function CaseHome({ navigation }) {
     const [addCaseModalShow, setAddCaseModalShow] = useState(false);
     const [coldWalletModalShow, setColdWalletModalShow] = useState(false);
     const { dark } = useTheme();
-    const dispatch = useDispatch();
     const auth = useSelector((state: any) => state.auth);
     const operations = useSelector((state: any) => state.operations.operations);
+    const [statValues, setStatValues] = useState([0, 0, 0, 0]);
+    const dispatch = useDispatch();
     // const tempWallets = useSelector((state: any) => state.assets.tempWallets);
-
-    // console.log(operations)
 
     useEffect(() => {
         // dispatch(getTempWallets());
         dispatch(getOperationsByOrg(auth.org));
         // dispatch(clearLoadedPortfolios());
     }, [auth.org, dispatch]);
+
+    // Calculate Statistics Numbers
+    useEffect(() => {
+        let data = [0, 0, 0, 0];
+        for (var i = 0;i < operations.length;i++) {
+            data[0] += operations[i].portfolio_count;
+            data[1] += operations[i].asset_count;
+        }
+        data[3] = operations.length;
+        setStatValues(data);
+    }, [operations]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -66,7 +74,6 @@ export default function CaseHome({ navigation }) {
             name: case_name,
             organization_id: auth.org
         }))
-        console.log(case_name)
     };
 
     return (
@@ -83,7 +90,7 @@ export default function CaseHome({ navigation }) {
             </Div>
 
             {/* Statistics numbers */}
-            <StatView portfolio={79} assets={32} terminated={2} active={12} />
+            <StatView portfolio={statValues[0]} assets={statValues[1]} terminated={statValues[2]} active={statValues[3]} />
 
             <View style={{ flexDirection: 'row' }}>
                 <OutlineButton
@@ -95,7 +102,7 @@ export default function CaseHome({ navigation }) {
             </View>
 
             {/* List of cases */}
-            {operations.map((operation: any, index: number) => (
+            {operations.reverse().map((operation: any, index: number) => (
                 <CaseInfoPanel key={index} onInspect={onInspect} value={operation} />
             ))}
 

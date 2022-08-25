@@ -11,7 +11,7 @@ export const notiheaders = () => {
   return axiosConfigHeaders;
 };
 export const headers = (AR_Token?: any) => {
-  // let Authorization = AsyncStorage.getItem("jwtToken");
+  // let Authorization = await AsyncStorage.getItem("jwtToken");
   let Authorization = "AAmtbtItiyyLCQjqYidPWaScTwsByLbkQSJaRIyRoDFtnzRqggroyLoFPQFIlzxS";
   let axiosConfigHeaders = {
     headers: {
@@ -20,8 +20,8 @@ export const headers = (AR_Token?: any) => {
       "Access-Control-Allow-Headers": "*",
       "Access-Control-Allow-Credentials": "true",
       "X-Requested-With": "XMLHttpRequest",
-      "AR-Token": AR_Token ? "Fe0OAttwjE" : `${Authorization}`,
-      Authorization: `Bearer ${Authorization}`,
+      "AR-Token": AR_Token ? AR_Token : `${Authorization}`,
+      Authorization: AR_Token ? `Bearer ${AR_Token}` : `Bearer ${Authorization}`,
     },
   };
   return axiosConfigHeaders;

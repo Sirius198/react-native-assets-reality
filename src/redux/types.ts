@@ -76,3 +76,7 @@ export const SET_CLIENT_DATA = "SET_CLIENT_DATA";
 export const ADD_PERMISSION = "ADD_PERMISSION";
 export const CHECK_PERMISSION = "CHECK_PERMISSION";
 export const GET_OP_PERMISSIONS = "GET_OP_PERMISSIONS";
+
+
+// Graph data
+export const SET_GRAPH_DATA = "SET_GRAPH_DATA";

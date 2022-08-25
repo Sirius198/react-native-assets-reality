@@ -24,7 +24,7 @@ export default function ActivityPage({ navigation }) {
         <MainContentWrapper>
             <SearchBox style={{ marginBottom: 16 }} />
 
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+            {[].map((_, index) => (
                 <ActivityItem key={index} />
             ))}
         </MainContentWrapper>

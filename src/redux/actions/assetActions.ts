@@ -10,7 +10,6 @@ import {
 import headers from "./headers";
 
 export const getAssets = (id: any) => (dispatch: any) => {
-  console.log(id);
   dispatch({ type: ASSETS_LOADING });
   http
     .get(`/portfolio/${id}/assets`, headers())

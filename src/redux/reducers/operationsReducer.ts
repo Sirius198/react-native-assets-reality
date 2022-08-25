@@ -38,6 +38,7 @@ export const operationsReducer = (
         portfolios: action.payload,
         selectedPort: action.payload[0],
         loading: false,
+        noPortfolio: action.payload.length === 0
       };
     case types.SELECT_OP:
       return {
@@ -59,6 +60,11 @@ export const operationsReducer = (
         selectedPort: action.payload,
         loading: false,
       };
+    case types.SET_GRAPH_DATA:
+      return {
+        ...state,
+        graphData: action.payload,
+      }
     default:
       return state;
   }

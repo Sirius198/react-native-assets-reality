@@ -20,10 +20,19 @@ const CaseInspectPage = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const portfolios = useSelector((state: any) => state.operations.portfolios);
     const selectedOp = useSelector((state: any) => state.operations.selectedOp);
+    const opLoading = useSelector((state: any) => state.operations.loading);
 
     useEffect(() => {
         dispatch(getPortfoliosByOperation(operation_id));
     }, [operation_id]);
+
+    useEffect(() => {
+        console.log(opLoading, portfolios.length)
+        if (opLoading == false && portfolios.length == 0)
+            setAddPortfolioModalShow(true);
+        else
+            setAddPortfolioModalShow(false);
+    }, [opLoading]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -34,15 +43,13 @@ const CaseInspectPage = ({ navigation, route }) => {
                 </View>
             ),
             headerRight: () => (
-                <MenuPlusButton
-                    onPress={() => setAddPortfolioModalShow(true)}
-                />
+                <MenuPlusButton onPress={() => setAddPortfolioModalShow(true)} />
             ),
         });
     }, []);
 
     const gotoAssetsPage = () => {
-        console.log(portfolios)
+        if (portfolios.length === 0) return;
         navigation.navigate('Assets', {
             portfolio: portfolios[activePortfolio]
         });
@@ -55,7 +62,7 @@ const CaseInspectPage = ({ navigation, route }) => {
             {/* Total Assets and Recent Activity Buttons */}
             <View style={{ flexDirection: 'row', marginTop: 20, marginBottom: 20, justifyContent: 'space-between' }}>
                 <OutlineButton
-                    text="Total Assets"
+                    text="Assets"
                     style={{ marginRight: 16, flex: 1 }}
                     onPress={gotoAssetsPage}
                 />

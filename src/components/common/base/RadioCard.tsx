@@ -10,7 +10,7 @@ interface IRadioCard {
     title: string;
     subtitle: string;
     icon: JSX.Element | undefined;
-    // onPress: () => void | undefined;
+    onPress?: () => void;
 }
 
 export default function RadioCard({

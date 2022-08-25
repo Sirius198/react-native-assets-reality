@@ -10,9 +10,9 @@ const ModalHeader = ({ showBackButton = true, showCloseButton = true, onClose, c
             {/* Back Button and Content */}
             <Div>
                 {showBackButton &&
-                    <ModalButton marginRight={10} onPress={onClose}>
-                        <MySVG.AngleLeft style={{ color: '#363853' }} />
-                    </ModalButton>
+                    <HeaderButton onPress={onClose} style={{ marginRight: 10 }}>
+                        {/* <MySVG.AngleLeft style={{ color: '#363853' }} /> */}
+                    </HeaderButton>
                 }
                 {children}
             </Div>

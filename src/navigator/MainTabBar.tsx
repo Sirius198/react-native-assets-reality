@@ -27,11 +27,11 @@ const MainTabBar = ({ navInfo }) => {
                             justifyContent: 'center'
                         }}
                     >
-                        {index === 0 && (activeNavId == 0 ? <MySVG.NavCase2 /> : <MySVG.NavCase />)}
-                        {index === 1 && (activeNavId == 1 ? <MySVG.NavClient2 /> : <MySVG.NavClient />)}
-                        {index === 2 && (activeNavId == 2 ? <MySVG.NavActivity2 /> : <MySVG.NavActivity />)}
-                        {index === 3 && (activeNavId == 3 ? <MySVG.NavSetting2 /> : <MySVG.NavSetting />)}
-                        {index === 4 && (activeNavId == 4 ? <MySVG.NavProfile2 /> : <MySVG.NavProfile />)}
+                        {index === 0 && (activeNavId == 0 ? <MySVG.NavCase2 /> : <MySVG.NavCase style={{ color: '#B0B1BC'}} />)}
+                        {/* {index === 1 && (activeNavId == 1 ? <MySVG.NavClient2 /> : <MySVG.NavClient />)} */}
+                        {/* {index === 2 && (activeNavId == 2 ? <MySVG.NavActivity2 /> : <MySVG.NavActivity />)} */}
+                        {index === 1 && (activeNavId == 1 ? <MySVG.NavSetting2 /> : <MySVG.NavSetting />)}
+                        {index === 2 && (activeNavId == 2 ? <MySVG.NavProfile2 /> : <MySVG.NavProfile />)}
                     </LinearGradient>
                 </TabButton>
             ))}

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import AssetItem from '../../../components/cases/detail/AssetItem';
@@ -20,6 +20,7 @@ export default function TotalAssetsPage({ route, navigation }) {
     const [showQuickActionModal, setShowQuickActionModal] = useState(false);
     const [showQRCodeModal, setShowQRCodeModal] = useState(false);
     const assets = useSelector((state: any) => state.assets.assets);
+    const assets_loading: boolean = useSelector((state: any) => state.assets.loading);
     const dispatch = useDispatch();
     const [selectedAsset, setSelectedAsset] = useState<any>(undefined);
 
@@ -37,7 +38,7 @@ export default function TotalAssetsPage({ route, navigation }) {
         navigation.setOptions({
             headerTitle: () => (
                 <View>
-                    <Typography weight="Bold" size={18}>Total Assets</Typography>
+                    <Typography weight="Bold" size={18}>Assets</Typography>
                     <Typography variant="secondary" size={14}>in Total</Typography>
                 </View>
             ),
@@ -48,6 +49,17 @@ export default function TotalAssetsPage({ route, navigation }) {
             ),
         })
     }, []);
+    console.log(assets_loading)
+
+    if (assets_loading)
+        return <View style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
+            {/* <Typography>Loading assets...</Typography> */}
+            <ActivityIndicator size={"large"} />
+        </View>;
 
     return (
         <Wrapper>

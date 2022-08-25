@@ -91,17 +91,6 @@ export default function AddAssetModal({ show, onClose, portfolio }) {
 
             <ScrollViewWrapper showsVerticalScrollIndicator={false}>
 
-                {/* <View>
-                    <DropDownPicker
-                        open={open}
-                        value={value}
-                        items={items}
-                        setOpen={setOpen}
-                        setValue={setValue}
-                        setItems={setItems}
-                    />
-                </View> */}
-
                 {/* Asset Type */}
                 <Typography weight="Medium">Select Asset Type</Typography>
                 <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the asset you want track</Typography>
@@ -132,7 +121,7 @@ export default function AddAssetModal({ show, onClose, portfolio }) {
                             active={addressType === 1}
                             title="Generate"
                             subtitle="Generate a warm wallet instantly. Fast and easy to use"
-                            icon={<MySVG.Location style={{ color: addressType === 1 ? '#FFF' : '#3E7EFF' }} />}
+                            icon={<MySVG.AddressGen style={{ color: addressType === 1 ? '#FFF' : '#3E7EFF' }} />}
                             onPress={() => setAddressType(1)}
                         />
 
@@ -140,7 +129,7 @@ export default function AddAssetModal({ show, onClose, portfolio }) {
                             active={addressType === 2}
                             title="Add Existing Address"
                             subtitle="Add an existing address that holds the tokens you are trying to track"
-                            icon={<MySVG.Location style={{ color: addressType === 2 ? '#FFF' : '#3E7EFF' }} />}
+                            icon={<MySVG.AddressExisting style={{ color: addressType === 2 ? '#FFF' : '#3E7EFF' }} />}
                         // onPress={() => setAddressType(2)}
                         />
                     </>}
@@ -148,22 +137,22 @@ export default function AddAssetModal({ show, onClose, portfolio }) {
                 {/* Wallet Type */}
                 {addressType != 0 &&
                     <>
-                        <Typography weight="Medium" style={{ marginTop: 16 }}>Select Address Type</Typography>
-                        <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Address you want to configure</Typography>
+                        <Typography weight="Medium" style={{ marginTop: 16 }}>Select Wallet Type</Typography>
+                        <Typography variant="secondary" size={12} weight="Light" style={{ marginBottom: 8 }}>Pick the Wallet type that you need</Typography>
 
                         <RadioCard
                             active={walletType === 1}
-                            title="Generate"
-                            subtitle="Generate a warm wallet instantly. Fast and easy to use"
-                            icon={<MySVG.Location style={{ color: walletType === 1 ? '#FFF' : '#3E7EFF' }} />}
+                            title="Warm"
+                            subtitle="Generate a warm or cold wallet with out partner custodians"
+                            icon={<MySVG.WarmWallet style={{ color: walletType === 1 ? '#FFF' : '#3E7EFF' }} />}
                             onPress={() => setWalletType(1)}
                         />
 
                         <RadioCard
                             active={walletType === 2}
-                            title="Add Existing Address"
-                            subtitle="Add an existing address that holds the tokens you are trying to track"
-                            icon={<MySVG.Location style={{ color: walletType === 2 ? '#FFF' : '#3E7EFF' }} />}
+                            title="Cold"
+                            subtitle="Generate a cold wallet, more safe but more offline steps"
+                            icon={<MySVG.Privacy style={{ color: walletType === 2 ? '#FFF' : '#3E7EFF' }} />}
                         // onPress={() => setWalletType(2)}
                         />
                     </>

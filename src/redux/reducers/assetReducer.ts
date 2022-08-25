@@ -5,7 +5,7 @@ import initState from "./initialState";
 
 export const assetReducer = (state = initState.assets, action: any) => {
   switch (action.type) {
-    case types.ASSET_LOADING:
+    case types.ASSETS_LOADING:
       return {
         ...state,
         loading: true,

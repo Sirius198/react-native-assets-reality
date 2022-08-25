@@ -3,8 +3,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './src/redux/store';
 import AppContainer from './src';
-import Typography from './src/components/common/typography/Typography';
-import { View, Text } from 'react-native';
 
 export default function App() {
 

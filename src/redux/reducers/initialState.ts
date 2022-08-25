@@ -21,6 +21,8 @@ export default {
     operations: [],
     selectedOp: {},
     selectedPort: {},
+    graphData: {},
+    noPortfolio: false,
   },
   assets: {
     loading: false,
