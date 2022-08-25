@@ -11,6 +11,7 @@ import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import SearchBox from '../../../components/common/input/SearchBox';
 import Typography from '../../../components/common/typography/Typography';
 import { getAssets } from '../../../redux/actions/assetActions';
+import LoadingScreen from '../../common/LoadingScreen';
 
 export default function TotalAssetsPage({ route, navigation }) {
 
@@ -51,14 +52,7 @@ export default function TotalAssetsPage({ route, navigation }) {
     console.log(assets_loading)
 
     if (assets_loading)
-        return <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
-            {/* <Typography>Loading assets...</Typography> */}
-            <ActivityIndicator size={"large"} />
-        </View>;
+        return <LoadingScreen />
 
     return (
         <Wrapper>

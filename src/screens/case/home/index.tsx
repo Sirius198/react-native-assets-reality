@@ -16,16 +16,21 @@ import { getTempWallets } from "../../../redux/actions/assetActions";
 import { createNewOperation, getOperationsByOrg, selectOperation } from "../../../redux/actions/operationActions";
 import { clearLoadedPortfolios } from "../../../redux/actions/portfolioActions";
 import { getUserOrg } from "../../../redux/actions/authActions";
+import LoadingScreen from "../../common/LoadingScreen";
 
 export default function CaseHome({ navigation }) {
 
     const [addCaseModalShow, setAddCaseModalShow] = useState(false);
     const [coldWalletModalShow, setColdWalletModalShow] = useState(false);
-    const { dark } = useTheme();
-    const auth = useSelector((state: any) => state.auth);
-    const operations = useSelector((state: any) => state.operations.operations);
     const [statValues, setStatValues] = useState([0, 0, 0, 0]);
     const [sortedCaseData, setSortedCaseData] = useState<any[]>([]);
+
+    const { dark } = useTheme();
+
+    const auth = useSelector((state: any) => state.auth);
+    const operations = useSelector((state: any) => state.operations.operations);
+    const opLoading = useSelector((state: any) => state.operations.loading);
+
     const dispatch = useDispatch();
     // const tempWallets = useSelector((state: any) => state.assets.tempWallets);
 
@@ -34,7 +39,7 @@ export default function CaseHome({ navigation }) {
         dispatch(getOperationsByOrg(auth.org));
         // dispatch(clearLoadedPortfolios());
     }, [auth.org, dispatch]);
-    
+
     useEffect(() => {
         let data = [];
         for (var i = operations.length - 1; i >= 0; i--)
@@ -84,6 +89,9 @@ export default function CaseHome({ navigation }) {
             organization_id: auth.org
         }))
     };
+
+    if (opLoading)
+        return <LoadingScreen />
 
     return (
         <MainContentWrapper>

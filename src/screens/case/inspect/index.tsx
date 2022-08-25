@@ -10,6 +10,7 @@ import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import Typography from '../../../components/common/typography/Typography';
 import { getPortfoliosByOperation } from '../../../redux/actions/portfolioActions';
+import LoadingScreen from '../../common/LoadingScreen';
 
 const CaseInspectPage = ({ navigation, route }) => {
 
@@ -31,7 +32,7 @@ const CaseInspectPage = ({ navigation, route }) => {
             setAddPortfolioModalShow(true);
         else
             setAddPortfolioModalShow(false);
-    }, [opLoading]);
+    }, [opLoading, portfolios]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -53,6 +54,9 @@ const CaseInspectPage = ({ navigation, route }) => {
             portfolio: portfolios[activePortfolio]
         });
     };
+
+    if (opLoading)
+        return <LoadingScreen />
 
     return (
         <MainContentWrapper>
