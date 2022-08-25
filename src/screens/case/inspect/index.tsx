@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import AssetValueChart from '../../../components/cases/detail/AssetValueChart';
 import PortfolioButtons from '../../../components/cases/detail/PortfolioButtons';
@@ -9,6 +9,7 @@ import MainContentWrapper from '../../../components/common/base/MainContentWrapp
 import MenuPlusButton from '../../../components/common/buttons/MenuPlusButton';
 import OutlineButton from '../../../components/common/buttons/OutlineButton';
 import Typography from '../../../components/common/typography/Typography';
+import { getAssets } from '../../../redux/actions/assetActions';
 import { getPortfoliosByOperation } from '../../../redux/actions/portfolioActions';
 import LoadingScreen from '../../common/LoadingScreen';
 
@@ -17,22 +18,34 @@ const CaseInspectPage = ({ navigation, route }) => {
     const { operation_id } = route.params;
     const [activePortfolio, setActivePortfolio] = useState(0);
     const [addPortfolioModalShow, setAddPortfolioModalShow] = useState(false);
+    const [totalAssetValue, setTotalAssetValue] = useState(0);
 
     const dispatch = useDispatch();
     const portfolios = useSelector((state: any) => state.operations.portfolios);
     const selectedOp = useSelector((state: any) => state.operations.selectedOp);
     const opLoading = useSelector((state: any) => state.operations.loading);
+    const assets = useSelector((state: any) => state.assets.assets);
+    const assetsLoading = useSelector((state: any) => state.assets.loading);
+    console.log(portfolios, selectedOp)
 
     useEffect(() => {
         dispatch(getPortfoliosByOperation(operation_id));
     }, [operation_id]);
 
+    // Shows add portfolio modal when there is no portfolio
     useEffect(() => {
         if (opLoading == false && portfolios.length == 0)
             setAddPortfolioModalShow(true);
         else
             setAddPortfolioModalShow(false);
     }, [opLoading, portfolios]);
+
+    // Load assets if active portfolio changes
+    useEffect(() => {
+        if (opLoading === false && portfolios.length > 0)
+            dispatch(getAssets(portfolios[activePortfolio].id));
+    }, [activePortfolio, operation_id, portfolios, opLoading]);
+    console.log(assets)
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -106,7 +119,11 @@ const CaseInspectPage = ({ navigation, route }) => {
             </View>
 
             {/* Chart */}
-            <AssetValueChart />
+            {assetsLoading ?
+                <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 220 }}>
+                    <ActivityIndicator />
+                </View> :
+                <AssetValueChart />}
 
             {/* Portfolio Statistics */}
             <PortfolioStat assetCount={selectedOp.asset_count} />

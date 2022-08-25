@@ -14,23 +14,22 @@ const AssetValueChart = () => {
     const dispatch = useDispatch();
     const { dark } = useTheme();
     const graphData = useSelector((state: any) => state.operations.graphData);
+    const assets = useSelector((state: any) => state.assets.assets);
+    const assetsLoading = useSelector((state: any) => state.assets.loading);
 
     useEffect(() => {
-        const data = [
-            {
-                "asset": "BTC",
-                "initialTimestamp": "2022-07-30 14:36:31.279991+08",
-                "amount": 10
-            },
-            {
-                "asset": "ETH",
-                "initialTimestamp": "2022-07-27 14:36:31.279991+08",
-                "amount": 10
-            }
-        ];
+        let data = [];
+        for (var i = 0; i < assets.length; i++) {
+            let date = new Date(assets[i].seizure_date == "" ? assets[i].created_at : assets[i].seizure_date);
+            data.push({
+                asset: assets[i].asset_type,
+                initialTimestamp: date.toISOString(),
+                amount: Number(assets[i].value)
+            });
+        }
 
         dispatch(getGraphData(data));
-    }, []);
+    }, [assets]);
 
     return (
         <Wrapper>

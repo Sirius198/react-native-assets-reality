@@ -20,6 +20,12 @@ import LoadingScreen from "../../common/LoadingScreen";
 
 export default function CaseHome({ navigation }) {
 
+    // let str1 = "2022-08-25T05:08:34.157453Z";
+    // let str2 = "2022-07-30 14:36:31.279991+08";
+    // var date1 = new Date(str1);
+    // var date2 = new Date(str2);
+    // console.log(date1, date2)
+
     const [addCaseModalShow, setAddCaseModalShow] = useState(false);
     const [coldWalletModalShow, setColdWalletModalShow] = useState(false);
     const [statValues, setStatValues] = useState([0, 0, 0, 0]);
