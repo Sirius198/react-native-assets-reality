@@ -25,6 +25,7 @@ export default function CaseHome({ navigation }) {
     const auth = useSelector((state: any) => state.auth);
     const operations = useSelector((state: any) => state.operations.operations);
     const [statValues, setStatValues] = useState([0, 0, 0, 0]);
+    const [sortedCaseData, setSortedCaseData] = useState<any[]>([]);
     const dispatch = useDispatch();
     // const tempWallets = useSelector((state: any) => state.assets.tempWallets);
 
@@ -33,11 +34,18 @@ export default function CaseHome({ navigation }) {
         dispatch(getOperationsByOrg(auth.org));
         // dispatch(clearLoadedPortfolios());
     }, [auth.org, dispatch]);
+    useEffect(() => {
+        let data = [];
+        for (var i = operations.length - 1; i >= 0; i--)
+            data.push(operations[i]);
+        setSortedCaseData(data)
+    }, [operations]);
+    // console.log(operations.reserve())
 
     // Calculate Statistics Numbers
     useEffect(() => {
         let data = [0, 0, 0, 0];
-        for (var i = 0;i < operations.length;i++) {
+        for (var i = 0; i < operations.length; i++) {
             data[0] += operations[i].portfolio_count;
             data[1] += operations[i].asset_count;
         }
@@ -102,7 +110,7 @@ export default function CaseHome({ navigation }) {
             </View>
 
             {/* List of cases */}
-            {operations.reverse().map((operation: any, index: number) => (
+            {sortedCaseData.map((operation: any, index: number) => (
                 <CaseInfoPanel key={index} onInspect={onInspect} value={operation} />
             ))}
 
