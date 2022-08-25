@@ -97,7 +97,7 @@ const AssetValueChart = () => {
                         activeDot={{ r: 8 }}
                     />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis dataKey="x" type="number" domain={['dataMin', 'dataMax']} />
+                    <XAxis dataKey="x" />
                     {/* <YAxis axisLine={false} /> */}
                     <Tooltip content={<TooltipContent />} />
                 </AreaChart>
@@ -120,32 +120,6 @@ const TooltipContent = ({ active, payload, label }: {
         )
     }
     return null
-};
-
-const chartConfig = {
-    // backgroundGradientFrom: "rgba(0,0,0,0)",
-    backgroundGradientFromOpacity: 0,
-    // backgroundGradientTo: "rgba(0,0,0,0)",
-    backgroundGradientToOpacity: 0,
-    // color: (opacity = 1) => `rgba(0, 143, 251, ${opacity})`,
-    color: (opacity = 1) => `rgba(62, 126, 255, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
-    barPercentage: 0.1,
-    useShadowColorFromDataset: false // optional
-};
-const xt = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }];
-const data = {
-    labels: ["12:51 AM", "5:01 AM", "9:12 AM", "1:22 PM"],
-    datasets: [
-        {
-            data: [20, 45, 28, 80, 99, 43, 20, 45, 180, 80, 99, 43, 120, 45, 28, 80, 99, 43,],
-            color: () => `#008FFB`, // optional
-            strokeWidth: 2,
-            withDots: false,
-            withScrollableDot: false
-        },
-    ],
-    // legend: ["Rainy Days"] // optional
 };
 
 const Wrapper = styled.View`
