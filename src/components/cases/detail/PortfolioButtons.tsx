@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TouchableOpacity, View, Text, StyleSheet, ScrollView } from "react-native"
 import Typography from "../../common/typography/Typography";
 import styled from 'styled-components/native';
+import { useTheme } from "@react-navigation/native";
 
 const PortfolioButtons = ({ activeId, onChange, portfolios }) => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -25,8 +26,9 @@ const PortfolioButtons = ({ activeId, onChange, portfolios }) => {
 };
 
 const PfButton = ({ active, index, onPress, name }) => {
+    const { dark } = useTheme();
     return (
-        <PfButtonWrapper active={active} onPress={() => onPress(index)}>
+        <PfButtonWrapper dark={dark} active={active} onPress={() => onPress(index)}>
             <Typography
                 size={14}
                 weight={active ? "SemiBold" : "Regular"}
@@ -44,7 +46,7 @@ const PfButtonWrapper = styled.TouchableOpacity`
     border-radius: 10px;
     background-color: ${props => props.active ? "#3E7EFF" : 'transparent'};
     border: 1px solid;
-    border-color: ${props => props.active ? "#3E7EFF" : "#EFEFFA"};
+    border-color: ${props => props.active ? "#3E7EFF" : props.dark ? "#33353D" : "#EFEFFA"};
 `;
 
 export default PortfolioButtons;
