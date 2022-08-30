@@ -11,7 +11,14 @@ import IconWrapper from "../../common/base/IconWrapper";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import { useEffect, useState } from "react";
 
-export default function AssetQuickActionModal({ show, onClose, onNext, asset }) {
+interface IAssetQuickActionModal {
+    show: boolean;
+    onClose: any;
+    onNext: any;
+    asset: any;
+}
+
+export default function AssetQuickActionModal({ show, onClose, onNext, asset }: IAssetQuickActionModal) {
 
     const [actionType, setActionType] = useState(-1);
 
@@ -48,7 +55,7 @@ export default function AssetQuickActionModal({ show, onClose, onNext, asset }) 
                 title="Withdraw"
                 subtitle="Lorem Ipsum is simply text the printing."
                 icon={<MySVG.Withdrawal style={{ color: actionType === 0 ? '#FFF' : '#3E7EFF' }} />}
-                onPress={() => setActionType(0)}
+            // onPress={() => setActionType(0)}
             />
 
             <RadioCard
@@ -56,7 +63,7 @@ export default function AssetQuickActionModal({ show, onClose, onNext, asset }) 
                 title="Deposit"
                 subtitle="Lorem Ipsum is simply text the printing."
                 icon={<MySVG.DollarCircle style={{ color: actionType === 1 ? '#FFF' : '#3E7EFF' }} />}
-            // onPress={() => setActionType(1)}
+                onPress={() => asset.wallet_address == "" && setActionType(1)}
             />
 
             <ModalDefaultActions

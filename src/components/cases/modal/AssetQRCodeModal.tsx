@@ -50,7 +50,6 @@ export default function AssetQRCodeModal({ show, onClose, onOk, asset }: IAssetQ
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <QRCodeWrapper>
-                    {/* <QRCodeScanSvg /> */}
                     <QRCode value="Hello World" size={169} />
                 </QRCodeWrapper>
             </View>
