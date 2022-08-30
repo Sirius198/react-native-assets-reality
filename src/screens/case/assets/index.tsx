@@ -13,7 +13,12 @@ import Typography from '../../../components/common/typography/Typography';
 import { getAssets } from '../../../redux/actions/assetActions';
 import LoadingScreen from '../../common/LoadingScreen';
 
-export default function TotalAssetsPage({ route, navigation }) {
+interface ITotalAssetsPage {
+    route: any;
+    navigation: any;
+}
+
+export default function TotalAssetsPage({ route, navigation }: ITotalAssetsPage) {
 
     const { portfolio } = route.params;
 
@@ -28,6 +33,7 @@ export default function TotalAssetsPage({ route, navigation }) {
     useEffect(() => {
         // dispatch(getAssets(portfolio.id));
     }, [dispatch, portfolio]);
+    console.log(assets)
 
     const doQuickAction = (asset: any) => {
         setSelectedAsset(asset);
@@ -58,7 +64,7 @@ export default function TotalAssetsPage({ route, navigation }) {
         <Wrapper>
             <SearchBox style={{ marginBottom: 16 }} />
 
-            {assets.map((ast, index) => (
+            {assets.map((ast: any, index: number) => (
                 <AssetItem key={index} onQuickAction={() => doQuickAction(ast)} asset={ast} />
             ))}
 

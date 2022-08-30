@@ -87,9 +87,9 @@ function MainNavigation() {
         >
             <Tab.Screen name="Case" component={CaseScreen} />
             {/* <Tab.Screen name="Client" component={ClientScreen} /> */}
-            {/* <Tab.Screen name="Activity" component={ActivityScreen} /> */}
             <Tab.Screen name="Settings" component={SettingsScreen} />
             <Tab.Screen name="Profile" component={ProifileScreen} />
+            {/* <Tab.Screen name="Activity" component={ActivityScreen} /> */}
         </Tab.Navigator >
     );
 }

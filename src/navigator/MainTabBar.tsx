@@ -6,7 +6,11 @@ import styled from 'styled-components/native'
 import IconBox from "../components/common/svg/IconBox";
 import MySVG from "../components/common/svg";
 
-const MainTabBar = ({ navInfo }) => {
+interface IMainTabBar {
+    navInfo: any;
+}
+
+const MainTabBar = ({ navInfo }: IMainTabBar) => {
 
     const [activeNavId, setActiveIndex] = useState(0);
     const { dark, colors } = useTheme();
@@ -17,7 +21,7 @@ const MainTabBar = ({ navInfo }) => {
 
     return (
         <Wrapper style={{ backgroundColor: colors.card, borderColor: colors.border }}>
-            {navInfo.state.routes.map((nav, index) => (
+            {navInfo.state.routes.map((nav: any, index: number) => (
                 <TabButton key={index} onPress={() => setActiveIndex(index)} isActive={activeNavId === index}>
                     <LinearGradient
                         colors={activeNavId == index ? ['rgba(62,126,255,0.08)', 'transparent'] : [colors.card, colors.card]}
@@ -27,11 +31,12 @@ const MainTabBar = ({ navInfo }) => {
                             justifyContent: 'center'
                         }}
                     >
-                        {index === 0 && (activeNavId == 0 ? <MySVG.NavCase2 /> : <MySVG.NavCase style={{ color: '#B0B1BC'}} />)}
+                        {index === 0 && (activeNavId == 0 ? <MySVG.NavCase2 /> : <MySVG.NavCase style={{ color: '#B0B1BC' }} />)}
                         {/* {index === 1 && (activeNavId == 1 ? <MySVG.NavClient2 /> : <MySVG.NavClient />)} */}
                         {/* {index === 2 && (activeNavId == 2 ? <MySVG.NavActivity2 /> : <MySVG.NavActivity />)} */}
                         {index === 1 && (activeNavId == 1 ? <MySVG.NavSetting2 /> : <MySVG.NavSetting />)}
                         {index === 2 && (activeNavId == 2 ? <MySVG.NavProfile2 /> : <MySVG.NavProfile />)}
+                        {/* {index === 3 && <MySVG.NavActivity />} */}
                     </LinearGradient>
                 </TabButton>
             ))}
@@ -46,7 +51,7 @@ const Wrapper = styled.View`
     justify-content: space-around;
 `;
 
-const TabButton = styled.TouchableOpacity`
+const TabButton = styled.TouchableOpacity<{ isActive: boolean }>`
     height: 50px;
     width: 50px;
     // align-items: center;

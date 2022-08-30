@@ -10,6 +10,7 @@ import {
   GET_USER_PREF,
   SET_USER_PREF,
   USER_PREF,
+  LOGOUT,
 } from "../types";
 import { getTempWallets } from "./assetActions";
 import { setErrorMessage } from "./errorActions";
@@ -215,4 +216,8 @@ export const getUserPref = (data: any) => (dispatch: any) => {
         payload: "Cannot User Pref",
       });
     });
+};
+
+export const logout = () => (dispatch: any) => {
+  dispatch({ type: LOGOUT });
 };

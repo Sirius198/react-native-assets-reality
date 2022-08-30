@@ -1,7 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import { useContext, useMemo } from "react";
 import { Text, View, ScrollView, TouchableOpacity, Switch } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components/native'
 import IconWrapper from "../../components/common/base/IconWrapper";
 import Divider from "../../components/common/divider";
@@ -10,6 +10,7 @@ import IconBox from "../../components/common/svg/IconBox";
 import Typography from "../../components/common/typography/Typography";
 import UserAvatar from "../../components/profile/Avatar";
 import { ThemeContext } from "../../context-store/context";
+import { logout } from "../../redux/actions/authActions";
 
 const ProifileScreen = () => {
 
@@ -17,6 +18,11 @@ const ProifileScreen = () => {
     const { theme, setTheme } = useContext(ThemeContext);
     const iconColor = useMemo(() => dark ? '#FAFAFF' : '#23262F', [dark]);
     const auth = useSelector((state: any) => state.auth);
+    const dispatch = useDispatch();
+
+    const onLogout = () => {
+        dispatch(logout());
+    };
 
     return (
         <ScrollViewWrapper style={{ backgroundColor: colors.card }}>
@@ -66,7 +72,7 @@ const ProifileScreen = () => {
             </Button>
             <Divider />
 
-            <Button>
+            <Button onPress={onLogout}>
                 <IconWrapper radius={100} size={42}>
                     <MySVG.Logout style={{ color: '#3E7EFF' }} />
                 </IconWrapper>

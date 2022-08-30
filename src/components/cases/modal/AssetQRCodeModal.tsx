@@ -11,8 +11,16 @@ import IconWrapper from "../../common/base/IconWrapper";
 import ModalDefaultActions from "../../common/modal/ModalDefaultActions";
 import { useEffect, useState } from "react";
 import QRCodeScanSvg from "../../common/svg/extra/QRCodeScanSvg";
+import QRCode from 'react-native-qrcode-svg';
 
-export default function AssetQRCodeModal({ show, onClose, onOk, asset }) {
+type IAssetQRCodeModal = {
+    show: boolean;
+    onClose: any;
+    onOk: any;
+    asset: any;
+}
+
+export default function AssetQRCodeModal({ show, onClose, onOk, asset }: IAssetQRCodeModal) {
 
     if (!asset)
         return null
@@ -42,7 +50,8 @@ export default function AssetQRCodeModal({ show, onClose, onOk, asset }) {
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <QRCodeWrapper>
-                    <QRCodeScanSvg />
+                    {/* <QRCodeScanSvg /> */}
+                    <QRCode value="Hello World" size={169} />
                 </QRCodeWrapper>
             </View>
 
@@ -64,7 +73,7 @@ const TitleBar = styled.View`
     align-items: center;
 `;
 
-const QRCodeWrapper = styled.View`
+const QRCodeWrapper = styled.View<{ dark: boolean }>`
     border: 1px solid;
     border-color: ${props => props.dark ? '#FFF' : '#F0F0FA'};
     width: 295px;
