@@ -63,7 +63,7 @@ export default function AssetQuickActionModal({ show, onClose, onNext, asset }: 
                 title="Deposit"
                 subtitle="Lorem Ipsum is simply text the printing."
                 icon={<MySVG.DollarCircle style={{ color: actionType === 1 ? '#FFF' : '#3E7EFF' }} />}
-                onPress={() => asset.wallet_address == "" && setActionType(1)}
+                onPress={() => asset.wallet_address != "" && setActionType(1)}
             />
 
             <ModalDefaultActions
